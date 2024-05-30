@@ -102,4 +102,3 @@ func _on_bully_body_entered(body):
 
 func _on_area_2d_body_entered(body):
 	queenTouch.emit(body)
-	get_tree().reload_current_scene()

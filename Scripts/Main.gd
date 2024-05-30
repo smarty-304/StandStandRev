@@ -99,3 +99,12 @@ func GetExtremeCoords(max,x,array):
 		
 func GetGlobalPosFromTileValue(value):
 	return tile_map.map_to_local(Vector2i(value,value)).x
+
+
+func _on_minis_3_i_got_hit():
+	pass # Replace with function body.
+
+
+func _on_queen_queen_touch(body):
+	print("you Loose")
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")

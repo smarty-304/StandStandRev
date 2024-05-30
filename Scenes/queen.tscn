@@ -115,7 +115,6 @@ scale = Vector2(1.0138, 1)
 position = Vector2(0, 1.33333)
 scale = Vector2(0.995006, 1)
 shape = SubResource("RectangleShape2D_s1xwr")
-disabled = true
 debug_color = Color(0.715439, 0.475575, 0.232695, 0.42)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

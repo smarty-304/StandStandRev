@@ -69,16 +69,10 @@ position = Vector2(0, 0)
 [node name="minis4" parent="allMinis" instance=ExtResource("4_ulhwl")]
 position = Vector2(0, 0)
 
-[node name="minis5" parent="allMinis" instance=ExtResource("4_ulhwl")]
-position = Vector2(0, 0)
-
 [node name="minis6" parent="allMinis" instance=ExtResource("4_ulhwl")]
 position = Vector2(0, 0)
 
 [node name="minis2" parent="allMinis" instance=ExtResource("4_ulhwl")]
-position = Vector2(0, 0)
-
-[node name="minis3" parent="allMinis" instance=ExtResource("4_ulhwl")]
 position = Vector2(0, 0)
 
 [node name="BullyLeft" parent="." instance=ExtResource("5_65wrh")]
@@ -113,4 +107,9 @@ lowSide = false
 directionDash = Vector2(0, -1)
 directionRegular = Vector2(-1, 0)
 
+[connection signal="queenTouch" from="Queen" to="." method="_on_queen_queen_touch"]
+[connection signal="iGotHit" from="allMinis/minis" to="allMinis" method="_on_minis_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis4" to="allMinis" method="_on_minis_4_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis6" to="allMinis" method="_on_minis_6_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis2" to="allMinis" method="_on_minis_2_i_got_hit"]
 [connection signal="bully_touches_smth" from="BullyLeft" to="." method="_on_bully_bully_touches_smth"]
