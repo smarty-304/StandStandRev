@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://br3ht37gdw4sy"]
+
+[ext_resource type="Script" path="res://Scripts/Bully.gd" id="1_yw1ys"]
+[ext_resource type="Texture2D" uid="uid://dm0bjecnv15uf" path="res://Sprites/bouncer_sheet.png" id="3_bs6rh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsycm"]
+size = Vector2(11, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb002"]
+atlas = ExtResource("3_bs6rh")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs7mf"]
+atlas = ExtResource("3_bs6rh")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m67el"]
+atlas = ExtResource("3_bs6rh")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_521ki"]
+atlas = ExtResource("3_bs6rh")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1wn5"]
+atlas = ExtResource("3_bs6rh")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_srf2v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb002")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs7mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m67el")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs7mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cb002")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_521ki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1wn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_521ki")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Bully" type="CharacterBody2D"]
+position = Vector2(-24, 103)
+collision_mask = 7
+script = ExtResource("1_yw1ys")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qsycm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.03, 0.03)
+sprite_frames = SubResource("SpriteFrames_srf2v")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.290686
+speed_scale = 3.0

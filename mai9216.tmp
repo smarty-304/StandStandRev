@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvpiwx081xtad"]
+
+[ext_resource type="Texture2D" uid="uid://t7lbai4iwbp7" path="res://floor2.png" id="1_ji6hm"]
+[ext_resource type="Texture2D" uid="uid://dpcjhop6gth7t" path="res://icon.svg" id="2_gsxh8"]
+[ext_resource type="Script" path="res://Player.gd" id="2_pf3w2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_388dd"]
+texture = ExtResource("1_ji6hm")
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+1:0/0 = 0
+1:0/0/custom_data_0 = true
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+0:1/0/custom_data_0 = true
+1:1/0 = 0
+1:1/0/custom_data_0 = true
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_htc6d"]
+custom_data_layer_0/name = "dance"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_388dd")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(39, 41)
+tile_set = SubResource("TileSet_htc6d")
+format = 2
+layer_0/tile_data = PackedInt32Array(-1, 65536, 0, -65536, 65536, 0, -65535, 65536, 0, -65534, 65536, 0, -65533, 65536, 0, -65532, 65536, 0, -65531, 65536, 0, -65530, 65536, 0, 6, 65536, 0, 65542, 65536, 0, 131078, 65536, 0, 196614, 65536, 0, 262150, 65536, 0, 327686, 65536, 0, 393222, 65536, 0, 393221, 65536, 0, 393220, 65536, 0, 393219, 65536, 0, 393218, 65536, 0, 393217, 65536, 0, 393216, 65536, 0, 458751, 65536, 0, 393215, 65536, 0, 327679, 65536, 0, 262144, 65536, 0, 262143, 65536, 0, 196607, 65536, 0, 131071, 65536, 0, 65535, 65536, 0, 0, 65536, 0, 1, 65536, 0, 2, 65536, 0, 3, 65536, 0, 4, 65536, 0, 5, 65536, 0, 196611, 65536, 0, 131075, 65536, 0, 65539, 65536, 0, 65538, 65536, 0, 65537, 65536, 0, 65536, 65536, 0, 131072, 65536, 0, 196608, 65536, 0, 196609, 65536, 0, 131073, 65536, 0, 131074, 65536, 0, 196610, 65536, 0, 262146, 65536, 0, 262145, 65536, 0, 327681, 65536, 0, 327680, 65536, 0, 327682, 65536, 0, 327683, 65536, 0, 262147, 65536, 0, 262148, 65536, 0, 196612, 65536, 0, 131076, 65536, 0, 65540, 65536, 0, 65541, 65536, 0, 131077, 65536, 0, 196613, 65536, 0, 262149, 65536, 0, 327685, 65536, 0, 327684, 65536, 0)
+
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource("2_pf3w2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(95, 97)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_gsxh8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(87, 89)
+scale = Vector2(0.1, 0.1)
+zoom = Vector2(6.66, 6.66)
