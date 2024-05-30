@@ -74,7 +74,7 @@ func checkWall():
 				if global_position.y >= level.GetGlobalPosFromTileValue(level.secTileMaxY):
 					return true
 		else: #idleState
-			if global_position.x <= level.GetGlobalPosFromTileValue(level.secTileLowX) or global_position.x >= level.GetGlobalPosFromTileValue(level.secTileMaxX):
+			if global_position.x <= level.GetGlobalPosFromTileValue(level.danceTileLowX) or global_position.x >= level.GetGlobalPosFromTileValue(level.danceTileMaxX):
 				return true
 		return false
 		
@@ -96,7 +96,7 @@ func checkWall():
 					return true
 			return false
 		else: #idle State
-			if global_position.y <= level.GetGlobalPosFromTileValue(level.secTileLowY) or global_position.y >= level.GetGlobalPosFromTileValue(level.secTileMaxY):
+			if global_position.y <= level.GetGlobalPosFromTileValue(level.danceTileLowY) or global_position.y >= level.GetGlobalPosFromTileValue(level.danceTileMaxY):
 				return true
 		return false
 
