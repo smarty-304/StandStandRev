@@ -62,6 +62,10 @@ animations = [{
 position = Vector2(-24, 103)
 collision_mask = 7
 script = ExtResource("1_yw1ys")
+normalSpeed = null
+horizontalMovement = null
+lowSide = null
+startingDir = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qsycm")
@@ -71,5 +75,5 @@ scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_srf2v")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.0486202
+frame_progress = 0.322087
 speed_scale = 3.0
