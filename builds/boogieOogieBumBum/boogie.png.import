@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fic0im2ckk2r"
-path="res://.godot/imported/boogie.png-47c3f6581b999adee953fd12f7475525.ctex"
+path="res://.godot/imported/boogie.png-7f5f0d1bc063ee1f74866337fad1a3a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://builds/boogieOogieBumBum/boogie.png"
-dest_files=["res://.godot/imported/boogie.png-47c3f6581b999adee953fd12f7475525.ctex"]
+source_file="res://Builds/boogieOogieBumBum/boogie.png"
+dest_files=["res://.godot/imported/boogie.png-7f5f0d1bc063ee1f74866337fad1a3a7.ctex"]
 
 [params]
 
