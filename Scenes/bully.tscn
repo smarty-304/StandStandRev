@@ -1,10 +1,42 @@
-[gd_scene load_steps=10 format=3 uid="uid://br3ht37gdw4sy"]
+[gd_scene load_steps=18 format=3 uid="uid://br3ht37gdw4sy"]
 
 [ext_resource type="Script" path="res://Scripts/Bully.gd" id="1_yw1ys"]
 [ext_resource type="Texture2D" uid="uid://dm0bjecnv15uf" path="res://Sprites/bouncer_sheet.png" id="3_bs6rh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qsycm"]
 size = Vector2(11, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8m3c"]
+atlas = ExtResource("3_bs6rh")
+region = Rect2(0, 2048, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82ce1"]
+atlas = ExtResource("3_bs6rh")
+region = Rect2(512, 2048, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68egi"]
+atlas = ExtResource("3_bs6rh")
+region = Rect2(1024, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyms6"]
+atlas = ExtResource("3_bs6rh")
+region = Rect2(1536, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6c6p"]
+atlas = ExtResource("3_bs6rh")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsy4j"]
+atlas = ExtResource("3_bs6rh")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs3iy"]
+atlas = ExtResource("3_bs6rh")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iebvx"]
+atlas = ExtResource("3_bs6rh")
+region = Rect2(0, 1024, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cb002"]
 atlas = ExtResource("3_bs6rh")
@@ -28,6 +60,50 @@ region = Rect2(0, 512, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_srf2v"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8m3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82ce1")
+}],
+"loop": true,
+"name": &"DashD",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68egi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyms6")
+}],
+"loop": true,
+"name": &"DashL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6c6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsy4j")
+}],
+"loop": true,
+"name": &"DashR",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs3iy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iebvx")
+}],
+"loop": true,
+"name": &"DashUp",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cb002")
@@ -69,7 +145,6 @@ shape = SubResource("RectangleShape2D_qsycm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_srf2v")
-animation = &"Idle"
+animation = &"DashD"
 autoplay = "Idle"
-frame_progress = 0.0486202
 speed_scale = 3.0

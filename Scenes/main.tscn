@@ -84,10 +84,13 @@ position = Vector2(0, 0)
 [node name="BullyLeft" parent="." instance=ExtResource("5_65wrh")]
 position = Vector2(-23.928, 55.1815)
 cooldownSpeedFactor = 0.5
+rushSpeedFactor = 2
 
 [node name="BullyRight" parent="." instance=ExtResource("5_65wrh")]
 position = Vector2(119.64, 55.1815)
+scale = Vector2(-1, 1)
 cooldownSpeedFactor = 0.5
+rushSpeedFactor = 2
 lowSide = false
 directionDash = Vector2(-1, 0)
 directionRegular = Vector2(0, 1)
@@ -95,13 +98,16 @@ directionRegular = Vector2(0, 1)
 [node name="BullyUp" parent="." instance=ExtResource("5_65wrh")]
 position = Vector2(39.88, -24.0792)
 cooldownSpeedFactor = 0.5
+rushSpeedFactor = 2
 horizontalMovement = true
 directionDash = Vector2(0, 1)
 directionRegular = Vector2(1, 0)
 
 [node name="BullyDown" parent="." instance=ExtResource("5_65wrh")]
 position = Vector2(55.8319, 119.393)
+scale = Vector2(-1, 1)
 cooldownSpeedFactor = 0.5
+rushSpeedFactor = 2
 horizontalMovement = true
 lowSide = false
 directionDash = Vector2(0, -1)

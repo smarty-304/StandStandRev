@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export_category("Speed Values")
 @export var normalSpeed = 75
 @export var cooldownSpeedFactor = 0.1
+@export var rushSpeedFactor =5
 
 @export_category("Direction")
 @export var horizontalMovement: bool = false 
@@ -28,7 +29,7 @@ signal bully_touches_smth(something)
 
 func _ready():
 	#Sets starting Variables
-	rushSpeed = 10 * normalSpeed
+	rushSpeed = rushSpeedFactor * normalSpeed
 	speed = normalSpeed
 	direction = directionRegular
 
@@ -42,19 +43,31 @@ func _process(_delta):
 		speed = rushSpeed
 		directionRegular = direction
 		direction = directionDash
+		
+		#play Dash Animation
+		if directionDash == Vector2.DOWN:
+			animated_sprite_2d.play("DashD")
+		elif directionDash == Vector2.UP:
+			animated_sprite_2d.play("DashUp")
+		elif directionDash == Vector2.RIGHT:
+			animated_sprite_2d.play("DashR")
+		elif directionDash == Vector2.LEFT:
+			animated_sprite_2d.play("DashR")
 	
 	if checkWall():
-		if isRushing:
+		if isRushing: #goto Cooldown
 			isRushing = false
 			coolDown()
 		elif isCoolDown:
 			coolUp()
 		else:
 			direction= - direction
+			if horizontalMovement:
+				animated_sprite_2d.flip_h = not animated_sprite_2d.flip_h
 	velocity = direction * speed
 	move_and_slide()
 
-func checkWall():
+func checkWall(): ##and apply animation
 	
 	if horizontalMovement:
 		if isRushing:
@@ -70,7 +83,6 @@ func checkWall():
 				if global_position.y <= level.GetGlobalPosFromTileValue(level.secTileLowY):
 					return true
 			else:
-				print("bullyDown says hi")
 				if global_position.y >= level.GetGlobalPosFromTileValue(level.secTileMaxY):
 					return true
 		else: #idleState
@@ -110,6 +122,10 @@ func coolDown():
 	speed = cooldownSpeedFactor * normalSpeed
 	animated_sprite_2d.modulate = Color8(104,13,45,255)
 	collision_shape_2d.disabled = true
+	animated_sprite_2d.play("Idle")
+	if not horizontalMovement:
+		animated_sprite_2d.flip_h = not animated_sprite_2d.flip_h
+	
 	
 func coolUp():
 	isCoolDown = false
@@ -117,6 +133,8 @@ func coolUp():
 	speed = normalSpeed
 	animated_sprite_2d.modulate = Color8(255,255,255,255)
 	collision_shape_2d.disabled = false
+	if not horizontalMovement:
+		animated_sprite_2d.flip_h = not animated_sprite_2d.flip_h
 	
 	
 	
