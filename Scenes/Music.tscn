@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d11lx4ilys264"]
+
+[ext_resource type="AudioStream" uid="uid://ew562q8f806u" path="res://Sound/upbeat-pop-dance-186805.mp3" id="1_bmia5"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_bmia5")
+autoplay = true
+bus = &"Music"

@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var level = $".."
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var rush_sound = $RushSound
 
 @export_category("Speed Values")
 @export var normalSpeed = 75
@@ -43,6 +44,9 @@ func _process(_delta):
 		speed = rushSpeed
 		directionRegular = direction
 		direction = directionDash
+		rush_sound.play()
+		
+		
 		
 		#play Dash Animation
 		if directionDash == Vector2.DOWN:
@@ -57,6 +61,7 @@ func _process(_delta):
 	if checkWall():
 		if isRushing: #goto Cooldown
 			isRushing = false
+			rush_sound.stop()
 			coolDown()
 		elif isCoolDown:
 			coolUp()

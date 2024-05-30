@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dr1n0gdxqef55" path="res://Scenes/queen.tscn" id="3_mr345"]
 [ext_resource type="PackedScene" uid="uid://cjqhut1o3jeie" path="res://Scenes/minis.tscn" id="4_ulhwl"]
 [ext_resource type="PackedScene" uid="uid://br3ht37gdw4sy" path="res://Scenes/bully.tscn" id="5_65wrh"]
-[ext_resource type="Script" path="res://Scenes/allMinis.gd" id="5_iwjhi"]
+[ext_resource type="Script" path="res://Scripts/allMinis.gd" id="5_iwjhi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_388dd"]
 texture = ExtResource("1_qo1dg")
