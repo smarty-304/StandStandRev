@@ -20,6 +20,8 @@ var backTileMaxY
 var backTileLowX
 var backTileLowY
 
+var maxCombo: int
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -103,7 +105,3 @@ func GetGlobalPosFromTileValue(value):
 
 func _on_minis_3_i_got_hit():
 	pass # Replace with function body.
-
-
-func _on_queen_queen_touch(_body):
-	get_tree().change_scene_to_file("res://Scenes/loose.tscn")

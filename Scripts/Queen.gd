@@ -1,6 +1,10 @@
 extends CharacterBody2D
 @onready var level = $".."
 @onready var timer = $Timer
+@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var loose = $Loose
+@onready var queen = $"."
+
 
 var direction
 @export var speed = 20
@@ -9,7 +13,9 @@ var direction
 @export var safetyMargin = .5
 var pastDirection
 
-signal queenTouch(body)
+
+
+signal queenTouch()
 
 
 func _ready():
@@ -46,4 +52,13 @@ func setRandomDir():
 	direction = Vector2(randf_range(-1,1), randf_range(-1,1))
 
 func _on_area_2d_body_entered(body):
-	queenTouch.emit(body)
+	animated_sprite_2d.play("loose")
+	var tweenSize = create_tween()
+	var tweenRot = create_tween()
+	tweenRot.tween_property(queen,"rotation", 1,2 )
+	tweenSize.tween_property(queen, "scale", Vector2(8,8),2)
+	
+	loose.start()
+
+func _on_loose_timeout():
+	get_tree().change_scene_to_file("res://Scenes/loose.tscn")

@@ -1,15 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjqhut1o3jeie"]
+[gd_scene load_steps=6 format=3 uid="uid://cjqhut1o3jeie"]
 
 [ext_resource type="Script" path="res://Scripts/Mini.gd" id="1_f2jqs"]
 [ext_resource type="PackedScene" uid="uid://b8wllvaj5c2ap" path="res://mini_anim.tscn" id="2_dstsm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0m7t"]
-size = Vector2(16.875, 16.25)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_08hgf"]
 polygon = PackedVector2Array(-6.25, 8.75, 6.25, 8.75, 6.25, 6.25, 6.25, 3.75, 6.25, 0, 5, -6.25, 2.5, -8.75, -3.75, -8.75, -6.25, -2.5, -7.5, 2.5)
 
-[node name="minis" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0m7t"]
+size = Vector2(16.875, 16.25)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s43r7"]
+radius = 6.25
+height = 12.5
+
+[node name="minis" type="CharacterBody2D"]
 z_index = 90
 scale = Vector2(0.8, 0.8)
 collision_layer = 2
@@ -18,10 +22,6 @@ script = ExtResource("1_f2jqs")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.625)
-shape = SubResource("RectangleShape2D_v0m7t")
 
 [node name="MiniAnim" parent="." instance=ExtResource("2_dstsm")]
 
@@ -36,7 +36,18 @@ occluder = SubResource("OccluderPolygon2D_08hgf")
 wait_time = 0.05
 one_shot = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.625)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_v0m7t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.19209e-07)
+shape = SubResource("CapsuleShape2D_s43r7")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="turnAroundTimer" to="." method="_on_turn_around_timer_timeout"]
 [connection signal="timeout" from="hitStop" to="." method="_on_hit_stop_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

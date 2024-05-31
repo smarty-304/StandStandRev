@@ -26,6 +26,17 @@ var isCoolDown = false
 
 var dashLeftRight: bool = true
 
+var combo: int
+var maxCombo: int
+var maxComboActive = false
+@onready var max_comboLabel = $"../../Camera2D/MaxCombo"
+@onready var comboLabel = $"../../Camera2D/Combo"
+
+
+
+
+@onready var comboTimer = $ComboTimer
+
 signal bully_touches_smth(something)
 
 func _ready():
@@ -145,6 +156,16 @@ func coolUp():
 		animated_sprite_2d.flip_h = not animated_sprite_2d.flip_h
 
 	
+func Combo():	
+	combo = combo + 1
+	comboTimer.start()
+	if combo > 1:
+		comboLabel.text = "Combo: " + str(combo)
+	
+	
+	if combo > level.maxCombo:
+		level.maxCombo = combo
+		max_comboLabel.text = "MaxCombo: " + str(level.maxCombo)
 	
 	
 	
@@ -152,3 +173,8 @@ func coolUp():
 	
 	
 	
+
+
+func _on_combo_timer_timeout():
+	combo = 0
+	comboLabel.text =""

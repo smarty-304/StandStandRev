@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dr1n0gdxqef55"]
+[gd_scene load_steps=17 format=3 uid="uid://dr1n0gdxqef55"]
 
 [ext_resource type="Script" path="res://Scripts/Queen.gd" id="1_fqe4u"]
 [ext_resource type="Texture2D" uid="uid://dha1ylj1o3f0s" path="res://Sprites/pirouette_sketch.png" id="2_5uly7"]
@@ -35,6 +35,10 @@ region = Rect2(512, 1024, 512, 512)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4a3cw"]
 atlas = ExtResource("3_til3u")
 region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7syus"]
+atlas = ExtResource("3_til3u")
+region = Rect2(1536, 0, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_karp2"]
 animations = [{
@@ -78,6 +82,14 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7syus")
+}],
+"loop": true,
+"name": &"loose",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1xwr"]
@@ -106,8 +118,8 @@ shape = SubResource("RectangleShape2D_ubx10")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_karp2")
+animation = &"loose"
 autoplay = "default"
-frame_progress = 0.71342
 speed_scale = 2.0
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -125,4 +137,9 @@ occluder = SubResource("OccluderPolygon2D_e76t3")
 [node name="Trail" parent="." instance=ExtResource("4_te2bw")]
 points = PackedVector2Array()
 
+[node name="Loose" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Loose" to="." method="_on_loose_timeout"]
