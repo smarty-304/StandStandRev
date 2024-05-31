@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvpiwx081xtad"]
+[gd_scene load_steps=10 format=3 uid="uid://cvpiwx081xtad"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_c1p4s"]
 [ext_resource type="Texture2D" uid="uid://t7lbai4iwbp7" path="res://Sprites/floor2.png" id="1_qo1dg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cjqhut1o3jeie" path="res://Scenes/minis.tscn" id="4_ulhwl"]
 [ext_resource type="PackedScene" uid="uid://br3ht37gdw4sy" path="res://Scenes/bully.tscn" id="5_65wrh"]
 [ext_resource type="Script" path="res://Scripts/allMinis.gd" id="5_iwjhi"]
+[ext_resource type="Texture2D" uid="uid://bxr5q60jjxut2" path="res://Sprites/circle.png" id="7_m2uhn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_388dd"]
 texture = ExtResource("1_qo1dg")
@@ -77,41 +78,37 @@ position = Vector2(23.928, 55.1815)
 [node name="minis2" parent="allMinis" instance=ExtResource("4_ulhwl")]
 position = Vector2(72.7809, 55.1815)
 
-[node name="BullyLeft" parent="." instance=ExtResource("5_65wrh")]
-position = Vector2(-23.928, 55.1815)
-normalSpeed = 75
-cooldownSpeedFactor = 0.5
-rushSpeedFactor = 2
-horizontalMovement = false
-lowSide = true
-directionDash = Vector2(1, 0)
-directionRegular = Vector2(0, -1)
+[node name="Bullies" type="Node2D" parent="."]
 
-[node name="BullyRight" parent="." instance=ExtResource("5_65wrh")]
-position = Vector2(119.64, 55.1815)
-scale = Vector2(-1, 1)
-normalSpeed = 75
+[node name="BullyLeft" parent="Bullies" instance=ExtResource("5_65wrh")]
+position = Vector2(-23.928, 55.1815)
+scale = Vector2(1, 1)
 cooldownSpeedFactor = 0.5
 rushSpeedFactor = 2
-horizontalMovement = false
+
+[node name="BullyRight" parent="Bullies" instance=ExtResource("5_65wrh")]
+position = Vector2(119.64, 55.1815)
+rotation = 3.14159
+scale = Vector2(1, -1)
+cooldownSpeedFactor = 0.5
+rushSpeedFactor = 2
 lowSide = false
 directionDash = Vector2(-1, 0)
 directionRegular = Vector2(0, 1)
 
-[node name="BullyUp" parent="." instance=ExtResource("5_65wrh")]
+[node name="BullyUp" parent="Bullies" instance=ExtResource("5_65wrh")]
 position = Vector2(39.88, -24.0792)
-normalSpeed = 75
+scale = Vector2(1, 1)
 cooldownSpeedFactor = 0.5
 rushSpeedFactor = 2
 horizontalMovement = true
-lowSide = true
 directionDash = Vector2(0, 1)
 directionRegular = Vector2(1, 0)
 
-[node name="BullyDown" parent="." instance=ExtResource("5_65wrh")]
+[node name="BullyDown" parent="Bullies" instance=ExtResource("5_65wrh")]
 position = Vector2(55.8319, 119.393)
-scale = Vector2(-1, 1)
-normalSpeed = 75
+rotation = 3.14159
+scale = Vector2(1, -1)
 cooldownSpeedFactor = 0.5
 rushSpeedFactor = 2
 horizontalMovement = true
@@ -119,9 +116,20 @@ lowSide = false
 directionDash = Vector2(0, -1)
 directionRegular = Vector2(-1, 0)
 
+[node name="Lights" type="Node2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="Light" type="PointLight2D" parent="Lights"]
+position = Vector2(28.913, 34.1122)
+scale = Vector2(0.147923, 0.147923)
+energy = 0.1
+shadow_enabled = true
+shadow_color = Color(0.339646, 0.146907, 0.585184, 0)
+texture = ExtResource("7_m2uhn")
+texture_scale = 2.29
+
 [connection signal="queenTouch" from="Queen" to="." method="_on_queen_queen_touch"]
 [connection signal="iGotHit" from="allMinis/minis" to="allMinis" method="_on_minis_i_got_hit"]
 [connection signal="iGotHit" from="allMinis/minis4" to="allMinis" method="_on_minis_4_i_got_hit"]
 [connection signal="iGotHit" from="allMinis/minis6" to="allMinis" method="_on_minis_6_i_got_hit"]
 [connection signal="iGotHit" from="allMinis/minis2" to="allMinis" method="_on_minis_2_i_got_hit"]
-[connection signal="bully_touches_smth" from="BullyLeft" to="." method="_on_bully_bully_touches_smth"]

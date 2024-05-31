@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @onready var level = $".."
+@onready var timer = $Timer
 
 var direction
 @export var speed = 20
@@ -19,9 +20,7 @@ func _process(delta):
 	velocity = direction * speed
 	move_and_slide()
 
-
 func checkWallAndDirection():
-	print("TODO: finish this function!!!")
 	
 	#TOP Wall
 	if global_position.y <= level.GetGlobalPosFromTileValue(level.danceTileLowY)+safetyMargin:
@@ -31,16 +30,16 @@ func checkWallAndDirection():
 	
 	#Bottom Wall
 	if global_position.y >= level.GetGlobalPosFromTileValue(level.danceTileMaxY)-safetyMargin:
-		print("TOPWALL")
+		print("BOTTOM WALL")
 		direction = Vector2(direction.x,-direction.y)
 	#Left Wall
 	if global_position.x <= level.GetGlobalPosFromTileValue(level.danceTileLowX)+safetyMargin:
-		print("TOPWALL")
+		print("Left Wall")
 		direction = Vector2(-direction.x,direction.y)
 	
 	#Right Wall
 	if global_position.x >= level.GetGlobalPosFromTileValue(level.danceTileMaxX)-safetyMargin:
-		print("TOPWALL")
+		print("Wall Mart")
 		direction = Vector2(-direction.x,direction.y)
 	
 func setRandomDir():

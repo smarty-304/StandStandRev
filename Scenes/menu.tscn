@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bny4g8les4kt6"]
 
-[ext_resource type="Script" path="res://Menu.gd" id="1_8wxdk"]
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_8wxdk"]
 [ext_resource type="Texture2D" uid="uid://dha1ylj1o3f0s" path="res://Sprites/pirouette_sketch.png" id="2_xwxg7"]
 
 [node name="Menu" type="Control"]

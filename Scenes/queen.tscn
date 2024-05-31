@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dr1n0gdxqef55"]
+[gd_scene load_steps=16 format=3 uid="uid://dr1n0gdxqef55"]
 
 [ext_resource type="Script" path="res://Scripts/Queen.gd" id="1_fqe4u"]
 [ext_resource type="Texture2D" uid="uid://dha1ylj1o3f0s" path="res://Sprites/pirouette_sketch.png" id="2_5uly7"]
 [ext_resource type="Texture2D" uid="uid://uybmkx41n7lf" path="res://Sprites/pirouette_sheet.png" id="3_til3u"]
+[ext_resource type="PackedScene" uid="uid://bpk6e2cldvs4t" path="res://Scenes/trail.tscn" id="4_te2bw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubx10"]
 size = Vector2(5.33333, 6)
@@ -82,7 +83,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1xwr"]
 size = Vector2(9.33333, 10)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e76t3"]
+polygon = PackedVector2Array(-2.66667, 7.33333, 0, 8, 2.66667, 7.33333, 2.66667, 5.33333, 6, 4, 6.66667, 1.33333, 7.33333, -2, 4.66667, -6.66667, 2.66667, -5.33333, -0.666668, -7.33333, -5.33333, -6, -7.33333, -2, -6.66667, 2.66667, -4.66667, 4.66667)
+
 [node name="Queen" type="CharacterBody2D"]
+z_index = 100
 position = Vector2(49, 31)
 scale = Vector2(1.5, 1.5)
 collision_layer = 4
@@ -92,10 +97,6 @@ script = ExtResource("1_fqe4u")
 visible = false
 scale = Vector2(0.0280469, 0.0280469)
 texture = ExtResource("2_5uly7")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.5
-autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.66667)
@@ -116,5 +117,11 @@ position = Vector2(0, 1)
 scale = Vector2(0.995006, 0.993996)
 shape = SubResource("RectangleShape2D_s1xwr")
 debug_color = Color(0.715439, 0.475575, 0.232695, 0.42)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_e76t3")
+
+[node name="Trail" parent="." instance=ExtResource("4_te2bw")]
+points = PackedVector2Array(-7, 1, 2, 2, 13, 10, 14, 1, 17, -7, -1, -17, -23, -7, -20, 13, 10, 31, 32, 22, 37, 3, 41, -20, 18, -30, -17, -33, -25, -30, -33, -25)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://qteje7nwu7sx"]
+
+[ext_resource type="Script" path="res://Scenes/QueenTrail.gd" id="1_pbcxj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_67yof"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_oy6gd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.987013, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_8ferv"]
+offsets = PackedFloat32Array(0, 0.0609952, 0.945425, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.780036, 1, 0.761244, 1, 0.913725, 0.913725, 0.156863, 1, 1, 1, 1, 0)
+
+[node name="QueenTrail" type="Line2D"]
+modulate = Color(1.5, 1.5, 1.5, 1)
+material = SubResource("CanvasItemMaterial_67yof")
+points = PackedVector2Array(-23.3333, 10.6667, -14, 10.6667, -6, 8, -3.33333, 4)
+width = 3.0
+width_curve = SubResource("Curve_oy6gd")
+gradient = SubResource("Gradient_8ferv")
+script = ExtResource("1_pbcxj")

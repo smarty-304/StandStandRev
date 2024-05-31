@@ -1,7 +1,7 @@
 extends CharacterBody2D
-@onready var tile_map = $"../TileMap"
-@onready var button = $Button
-@onready var level = $".."
+@onready var tile_map = $"../../TileMap"
+@onready var level = $"../.."
+
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var rush_sound = $RushSound
