@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://crnfidadxsurf"]
+[gd_scene load_steps=5 format=3 uid="uid://crnfidadxsurf"]
 
 [ext_resource type="Script" path="res://Scripts/settings.gd" id="1_a0j00"]
 [ext_resource type="PackedScene" uid="uid://cmcq3xy2bsiu8" path="res://Scripts/volume_slider.tscn" id="2_7knak"]
 [ext_resource type="Texture2D" uid="uid://chwvicwgpqow6" path="res://Sprites/bouncer_sketch.png" id="2_p1d6y"]
+[ext_resource type="Texture2D" uid="uid://50ajppmivtak" path="res://Sprites/main_background.png" id="4_exfah"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -66,5 +67,11 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "Back
 "
+
+[node name="MainBackground" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(512, 512)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_exfah")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

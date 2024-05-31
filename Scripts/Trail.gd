@@ -1,7 +1,9 @@
 extends Line2D
 @onready var queen = $Queen
 
-var max_length = 1000
+var max_length = 250
+
+
 
 var queue : Array
 

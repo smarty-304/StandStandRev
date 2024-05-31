@@ -1,8 +1,11 @@
 extends Area2D
 @onready var tile_map = $"../../TileMap"
-@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var animated_sprite_2d = $MiniAnim
+@onready var hit_stop = $hitStop
 
 @onready var timer = $Timer
+
+var evilBully
 
 var nextDirection
 
@@ -49,8 +52,11 @@ func _on_timer_timeout():
 
 
 func _on_body_entered(_body):
+	evilBully =_body
+	hit_stop.start()
+	evilBully.speed = 0
+	evilBully.modulate = Color(0, 0, 0, 1)
 	iGotHit.emit(self)
-	queue_free()
 
 
 func _on_turn_around_timer_timeout():
@@ -59,3 +65,9 @@ func _on_turn_around_timer_timeout():
 
 func setNexDirection():
 	nextDirection = randi_range(0,3)
+
+
+func _on_hit_stop_timeout():
+	evilBully.modulate = Color(1, 1, 1, 1)
+	evilBully.speed = evilBully.rushSpeed
+	queue_free()

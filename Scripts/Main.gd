@@ -106,5 +106,4 @@ func _on_minis_3_i_got_hit():
 
 
 func _on_queen_queen_touch(_body):
-	print("you Loose")
-	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/loose.tscn")

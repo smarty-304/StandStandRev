@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 @export_category("Speed Values")
 @export var normalSpeed = 75
-@export var cooldownSpeedFactor = 0.1
+var cooldownSpeedFactor = 1
 @export var rushSpeedFactor =5
 
 @export_category("Direction")
@@ -128,7 +128,7 @@ func coolDown():
 	isCoolDown = true
 	direction = -directionDash
 	speed = cooldownSpeedFactor * normalSpeed
-	animated_sprite_2d.modulate = Color8(104,13,45,255)
+	animated_sprite_2d.modulate = Color8(104,13,45,175)
 	collision_shape_2d.disabled = true
 	animated_sprite_2d.play("Idle")
 	if not horizontalMovement:
@@ -143,9 +143,7 @@ func coolUp():
 	collision_shape_2d.disabled = false
 	if not horizontalMovement:
 		animated_sprite_2d.flip_h = not animated_sprite_2d.flip_h
-	
-	
-	
+
 	
 	
 	

@@ -1,0 +1,184 @@
+[gd_scene load_steps=14 format=3 uid="uid://c88h1jonb5v7g"]
+
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_xidmx"]
+[ext_resource type="Texture2D" uid="uid://e654lntgo70c" path="res://Sprites/dancer_dad_sheet.png" id="2_yikev"]
+[ext_resource type="PackedScene" uid="uid://b8wllvaj5c2ap" path="res://mini_anim.tscn" id="4_3d230"]
+[ext_resource type="Texture2D" uid="uid://50ajppmivtak" path="res://Sprites/main_background.png" id="4_welmc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft5vw"]
+atlas = ExtResource("2_yikev")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4njr8"]
+atlas = ExtResource("2_yikev")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yu7e4"]
+atlas = ExtResource("2_yikev")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwbm5"]
+atlas = ExtResource("2_yikev")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xi50b"]
+atlas = ExtResource("2_yikev")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl21a"]
+atlas = ExtResource("2_yikev")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dmca"]
+atlas = ExtResource("2_yikev")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xru1"]
+atlas = ExtResource("2_yikev")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxhxi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft5vw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4njr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yu7e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwbm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yu7e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4njr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft5vw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi50b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl21a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dmca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xru1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dmca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl21a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi50b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xidmx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -308.5
+offset_right = 256.0
+offset_bottom = 308.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "YOU LOOSE!😒"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Play Again"
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Option"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer"]
+position = Vector2(645, 657)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_uxhxi")
+autoplay = "default"
+frame_progress = 0.805197
+speed_scale = 2.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="MarginContainer"]
+position = Vector2(-107, 657)
+scale = Vector2(-0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_uxhxi")
+autoplay = "default"
+frame_progress = 0.0424465
+speed_scale = 2.0
+
+[node name="MainBackground" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(512, 512)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_welmc")
+
+[node name="MiniAnim" parent="." instance=ExtResource("4_3d230")]
+position = Vector2(130, 608)
+scale = Vector2(0.5, 0.5)
+animation = &"lady"
+frame_progress = 0.866334
+
+[node name="MiniAnim2" parent="." instance=ExtResource("4_3d230")]
+position = Vector2(389, 608)
+scale = Vector2(0.5, 0.5)
+animation = &"lady"
+frame_progress = 0.0721488
+
+[node name="MiniAnim3" parent="." instance=ExtResource("4_3d230")]
+position = Vector2(630, 608)
+scale = Vector2(-0.5, 0.5)
+animation = &"lady"
+frame_progress = 0.0592139
+
+[node name="MiniAnim4" parent="." instance=ExtResource("4_3d230")]
+position = Vector2(889, 608)
+scale = Vector2(-0.5, 0.5)
+animation = &"lady"
+frame_progress = 0.0721488
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

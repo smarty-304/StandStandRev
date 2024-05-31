@@ -1,0 +1,180 @@
+[gd_scene load_steps=16 format=3 uid="uid://bd51eawrb10ba"]
+
+[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_3lko2"]
+[ext_resource type="Texture2D" uid="uid://uybmkx41n7lf" path="res://Sprites/pirouette_sheet.png" id="2_hr54r"]
+[ext_resource type="Texture2D" uid="uid://dha1ylj1o3f0s" path="res://Sprites/pirouette_sketch.png" id="2_svrri"]
+[ext_resource type="Texture2D" uid="uid://50ajppmivtak" path="res://Sprites/main_background.png" id="3_xk60l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3njjo"]
+atlas = ExtResource("2_hr54r")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xsvv"]
+atlas = ExtResource("2_hr54r")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sr076"]
+atlas = ExtResource("2_hr54r")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r642a"]
+atlas = ExtResource("2_hr54r")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kwx3"]
+atlas = ExtResource("2_hr54r")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbg33"]
+atlas = ExtResource("2_hr54r")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nli24"]
+atlas = ExtResource("2_hr54r")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55f8c"]
+atlas = ExtResource("2_hr54r")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cab4w"]
+atlas = ExtResource("2_hr54r")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shduu"]
+atlas = ExtResource("2_hr54r")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxhxi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3njjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xsvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr076")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r642a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr076")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r642a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr076")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r642a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xsvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3njjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kwx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbg33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nli24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbg33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kwx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3njjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55f8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cab4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shduu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cab4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55f8c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3lko2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_right = 256.0
+offset_bottom = 617.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(237, 258)
+sprite_frames = SubResource("SpriteFrames_uxhxi")
+autoplay = "default"
+frame_progress = 0.997963
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = ExtResource("2_svrri")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "YOU WON! 😍"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Play Again"
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Option"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="MainBackground" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(512, 512)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_xk60l")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
