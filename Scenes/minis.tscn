@@ -49,7 +49,6 @@ animations = [{
 }]
 
 [node name="minis" type="Area2D"]
-position = Vector2(88, 40)
 scale = Vector2(0.8, 0.8)
 collision_layer = 2
 script = ExtResource("1_f2jqs")

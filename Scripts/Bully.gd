@@ -33,6 +33,7 @@ func _ready():
 	rushSpeed = rushSpeedFactor * normalSpeed
 	speed = normalSpeed
 	direction = directionRegular
+	collision_shape_2d.disabled = true
 
 func _process(_delta):
 	#Input
@@ -41,6 +42,7 @@ func _process(_delta):
 		Input.is_action_just_pressed("up") and 		not( isRushing or isCoolDown)and (horizontalMovement and lowSide)) or (
 		Input.is_action_just_pressed("down") and 	not( isRushing or isCoolDown)and (horizontalMovement and not lowSide)):
 		isRushing = true
+		collision_shape_2d.disabled = false
 		speed = rushSpeed
 		directionRegular = direction
 		direction = directionDash
@@ -61,6 +63,7 @@ func _process(_delta):
 	if checkWall():
 		if isRushing: #goto Cooldown
 			isRushing = false
+			collision_shape_2d.disabled = true
 			rush_sound.stop()
 			coolDown()
 		elif isCoolDown:

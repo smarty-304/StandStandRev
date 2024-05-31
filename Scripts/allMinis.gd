@@ -5,9 +5,6 @@ func _ready():
 	for child in self.get_children():
 		children.append(child)
 
-		
-
-
 func _on_minis_i_got_hit(i):
 	children.erase(i)
 	if children.is_empty():
