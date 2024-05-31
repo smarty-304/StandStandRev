@@ -15,7 +15,7 @@ signal queenTouch(body)
 func _ready():
 	setRandomDir()
 
-func _process(delta):
+func _process(_delta):
 	checkWallAndDirection()
 	velocity = direction * speed
 	move_and_slide()

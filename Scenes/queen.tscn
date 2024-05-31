@@ -92,6 +92,7 @@ position = Vector2(49, 31)
 scale = Vector2(1.5, 1.5)
 collision_layer = 4
 script = ExtResource("1_fqe4u")
+speed = 60
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

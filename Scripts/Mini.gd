@@ -4,6 +4,8 @@ extends Area2D
 
 @onready var timer = $Timer
 
+var nextDirection
+
 signal iGotHit(i)
 
 
@@ -13,6 +15,7 @@ func _ready():
 		animated_sprite_2d.play("guy")
 	if randi_range(0,1) > 0:
 		animated_sprite_2d.flip_h = true
+	setNexDirection()
 
 
 func move(direction: Vector2):
@@ -33,20 +36,19 @@ func move(direction: Vector2):
 	#Move
 	global_position = tile_map.map_to_local(targetTile)
 
-
 func _on_timer_timeout():
-	var randomDir = randi_range(0,3)
-	if randomDir == 0:
+	if nextDirection == 0:
 		move(Vector2.UP)
-	elif  randomDir ==1:
+	elif  nextDirection ==1:
 		move(Vector2.DOWN)
-	elif  randomDir ==2:
+	elif  nextDirection ==2:
 		move(Vector2.LEFT)
-	elif  randomDir ==3:
+	elif  nextDirection ==3:
 		move(Vector2.RIGHT)
+	
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	iGotHit.emit(self)
 	queue_free()
 
@@ -54,3 +56,6 @@ func _on_body_entered(body):
 func _on_turn_around_timer_timeout():
 	if randi_range(0,1) > 0:
 		animated_sprite_2d.flip_h = not animated_sprite_2d.flip_h
+
+func setNexDirection():
+	nextDirection = randi_range(0,3)

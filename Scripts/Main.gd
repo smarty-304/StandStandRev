@@ -51,14 +51,14 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("Restart"):
 		get_tree().reload_current_scene()
 
-func GetExtremeCoords(max,x,array):
+func GetExtremeCoords(maximal,x,array):
 	var xtremeValue
 	var currentValue
-	if max:
+	if maximal:
 		if x:
 			for element in array:
 				currentValue = element.x
@@ -105,6 +105,6 @@ func _on_minis_3_i_got_hit():
 	pass # Replace with function body.
 
 
-func _on_queen_queen_touch(body):
+func _on_queen_queen_touch(_body):
 	print("you Loose")
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")

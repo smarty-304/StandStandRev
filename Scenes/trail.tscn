@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Trail.gd" id="1_4six0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mk23c"]
+blend_mode = 1
 
 [sub_resource type="Curve" id="Curve_4ktcq"]
 _data = [Vector2(0, 0.547066), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]

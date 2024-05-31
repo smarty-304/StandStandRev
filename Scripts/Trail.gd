@@ -5,7 +5,7 @@ var max_length = 1000
 
 var queue : Array
 
-func _process(delta):
+func _process(_delta):
 	var pos = get_parent().position
 
 	
@@ -16,5 +16,5 @@ func _process(delta):
 	
 	clear_points()
 	
-	for points in queue:
-		add_point(points)
+	for point in queue:
+		add_point(point)

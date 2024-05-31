@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvpiwx081xtad"]
+[gd_scene load_steps=13 format=3 uid="uid://cvpiwx081xtad"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_c1p4s"]
 [ext_resource type="Texture2D" uid="uid://t7lbai4iwbp7" path="res://Sprites/floor2.png" id="1_qo1dg"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cjqhut1o3jeie" path="res://Scenes/minis.tscn" id="4_ulhwl"]
 [ext_resource type="PackedScene" uid="uid://br3ht37gdw4sy" path="res://Scenes/bully.tscn" id="5_65wrh"]
 [ext_resource type="Script" path="res://Scripts/allMinis.gd" id="5_iwjhi"]
-[ext_resource type="Texture2D" uid="uid://bxr5q60jjxut2" path="res://Sprites/circle.png" id="7_m2uhn"]
+[ext_resource type="PackedScene" uid="uid://741oangkp2fb" path="res://Scenes/light.tscn" id="7_qdpux"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_388dd"]
 texture = ExtResource("1_qo1dg")
@@ -44,6 +44,68 @@ custom_data_layer_2/name = "back"
 custom_data_layer_2/type = 1
 sources/0 = SubResource("TileSetAtlasSource_388dd")
 
+[sub_resource type="Animation" id="Animation_n18hd"]
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lights/BlueLight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(97.7059, -1.0033)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lights/RedLight2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(103.688, 102.337)]
+}
+
+[sub_resource type="Animation" id="Animation_550hc"]
+resource_name = "lightMovement"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lights/BlueLight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.996994, 1.19209e-07), Vector2(94.7149, -1.0033), Vector2(46.859, 109.36), Vector2(0.996994, 63.208), Vector2(0.996994, 1.19209e-07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lights/RedLight2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(103.688, 102.337), Vector2(-0.997002, 92.3037), Vector2(55.8319, -38.1254), Vector2(98.7029, 69.2278), Vector2(103.688, 102.337)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b0vsa"]
+_data = {
+"RESET": SubResource("Animation_n18hd"),
+"lightMovement": SubResource("Animation_550hc")
+}
+
 [node name="Level" type="Node2D"]
 scale = Vector2(1.00301, 0.99671)
 script = ExtResource("1_c1p4s")
@@ -68,6 +130,24 @@ script = ExtResource("5_iwjhi")
 
 [node name="minis" parent="allMinis" instance=ExtResource("4_ulhwl")]
 position = Vector2(71.7839, 23.0759)
+
+[node name="minis3" parent="allMinis" instance=ExtResource("4_ulhwl")]
+position = Vector2(55.832, 7.02311)
+
+[node name="minis5" parent="allMinis" instance=ExtResource("4_ulhwl")]
+position = Vector2(40.877, 7.02311)
+
+[node name="minis7" parent="allMinis" instance=ExtResource("4_ulhwl")]
+position = Vector2(39.88, 103.34)
+
+[node name="minis8" parent="allMinis" instance=ExtResource("4_ulhwl")]
+position = Vector2(71.7839, 87.2872)
+
+[node name="minis9" parent="allMinis" instance=ExtResource("4_ulhwl")]
+position = Vector2(6.979, 87.2872)
+
+[node name="minis10" parent="allMinis" instance=ExtResource("4_ulhwl")]
+position = Vector2(-7.97599, 103.34)
 
 [node name="minis4" parent="allMinis" instance=ExtResource("4_ulhwl")]
 position = Vector2(8.97299, 23.0759)
@@ -116,17 +196,34 @@ directionRegular = Vector2(-1, 0)
 
 [node name="Lights" type="Node2D" parent="."]
 
-[node name="Light" type="PointLight2D" parent="Lights"]
-position = Vector2(28.913, 34.1122)
-scale = Vector2(0.147923, 0.147923)
-energy = 0.1
-shadow_enabled = true
-shadow_color = Color(0.339646, 0.146907, 0.585184, 0)
-texture = ExtResource("7_m2uhn")
-texture_scale = 2.29
+[node name="BlueLight" parent="Lights" instance=ExtResource("7_qdpux")]
+position = Vector2(97.7059, -1.0033)
+color = Color(0.596986, 0.561741, 0.986516, 1)
+energy = 0.3
+texture_scale = 4.24
+
+[node name="RedLight2" parent="Lights" instance=ExtResource("7_qdpux")]
+position = Vector2(103.688, 102.337)
+color = Color(1, 0, 0, 1)
+energy = 5.32
+texture_scale = 4.24
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lights"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_b0vsa")
+}
+autoplay = "lightMovement"
+speed_scale = 5.0
 
 [connection signal="queenTouch" from="Queen" to="." method="_on_queen_queen_touch"]
 [connection signal="iGotHit" from="allMinis/minis" to="allMinis" method="_on_minis_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis3" to="allMinis" method="_on_minis_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis5" to="allMinis" method="_on_minis_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis7" to="allMinis" method="_on_minis_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis8" to="allMinis" method="_on_minis_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis9" to="allMinis" method="_on_minis_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis10" to="allMinis" method="_on_minis_i_got_hit"]
 [connection signal="iGotHit" from="allMinis/minis4" to="allMinis" method="_on_minis_4_i_got_hit"]
 [connection signal="iGotHit" from="allMinis/minis6" to="allMinis" method="_on_minis_6_i_got_hit"]
 [connection signal="iGotHit" from="allMinis/minis2" to="allMinis" method="_on_minis_2_i_got_hit"]
