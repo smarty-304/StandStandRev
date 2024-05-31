@@ -1,10 +1,43 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjqhut1o3jeie"]
+[gd_scene load_steps=18 format=3 uid="uid://cjqhut1o3jeie"]
 
 [ext_resource type="Script" path="res://Scripts/Mini.gd" id="1_f2jqs"]
 [ext_resource type="Texture2D" uid="uid://gmqhciex7rvf" path="res://Sprites/dancer_lady_sheet.png" id="2_7d77a"]
+[ext_resource type="Texture2D" uid="uid://e654lntgo70c" path="res://Sprites/dancer_dad_sheet.png" id="2_picnb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0m7t"]
 size = Vector2(16.875, 16.25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k83pi"]
+atlas = ExtResource("2_picnb")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0dyo"]
+atlas = ExtResource("2_picnb")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ci07"]
+atlas = ExtResource("2_picnb")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofdxk"]
+atlas = ExtResource("2_picnb")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brhrj"]
+atlas = ExtResource("2_picnb")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgsph"]
+atlas = ExtResource("2_picnb")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65u27"]
+atlas = ExtResource("2_picnb")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pka8v"]
+atlas = ExtResource("2_picnb")
+region = Rect2(1536, 512, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ec0v"]
 atlas = ExtResource("2_7d77a")
@@ -26,6 +59,53 @@ region = Rect2(512, 512, 512, 512)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_k83pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0dyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ci07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofdxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ci07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0dyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k83pi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brhrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgsph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65u27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pka8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65u27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgsph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brhrj")
+}],
+"loop": true,
+"name": &"guy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8ec0v")
 }, {
 "duration": 1.0,
@@ -44,7 +124,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_66ncl")
 }],
 "loop": true,
-"name": &"default",
+"name": &"lady",
 "speed": 5.0
 }]
 
@@ -65,9 +145,15 @@ shape = SubResource("RectangleShape2D_v0m7t")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.035, 0.035)
 sprite_frames = SubResource("SpriteFrames_rj3v3")
-autoplay = "default"
-frame_progress = 0.173231
+animation = &"guy"
+autoplay = "lady"
+frame_progress = 0.75776
 speed_scale = 2.5
+
+[node name="turnAroundTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="turnAroundTimer" to="." method="_on_turn_around_timer_timeout"]

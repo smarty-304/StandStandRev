@@ -1,5 +1,6 @@
 extends Area2D
 @onready var tile_map = $"../../TileMap"
+@onready var animated_sprite_2d = $AnimatedSprite2D
 
 @onready var timer = $Timer
 
@@ -8,19 +9,11 @@ signal iGotHit(i)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if randi_range(0,1) > 0:
+		animated_sprite_2d.play("guy")
+	if randi_range(0,1) > 0:
+		animated_sprite_2d.flip_h = true
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_pressed("up"):
-		move(Vector2.UP)
-	elif Input.is_action_just_pressed("down"):
-		move(Vector2.DOWN)
-	elif Input.is_action_just_pressed("left"):
-		move(Vector2.LEFT)
-	elif Input.is_action_just_pressed("right"):
-		move(Vector2.RIGHT)
 
 func move(direction: Vector2):
 	
@@ -56,3 +49,8 @@ func _on_timer_timeout():
 func _on_body_entered(body):
 	iGotHit.emit(self)
 	queue_free()
+
+
+func _on_turn_around_timer_timeout():
+	if randi_range(0,1) > 0:
+		animated_sprite_2d.flip_h = not animated_sprite_2d.flip_h
