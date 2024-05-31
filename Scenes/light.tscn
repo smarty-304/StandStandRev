@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://741oangkp2fb"]
+
+[ext_resource type="Texture2D" uid="uid://bxr5q60jjxut2" path="res://Sprites/circle.png" id="1_j0e2g"]
+[ext_resource type="Script" path="res://Scenes/light.gd" id="2_qd3n1"]
+
+[node name="Light" type="PointLight2D"]
+position = Vector2(28.913, 34.1122)
+scale = Vector2(0.147923, 0.147923)
+energy = 0.1
+shadow_enabled = true
+shadow_color = Color(0.339646, 0.146907, 0.585184, 0)
+texture = ExtResource("1_j0e2g")
+texture_scale = 2.29
+script = ExtResource("2_qd3n1")

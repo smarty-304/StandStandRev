@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bpk6e2cldvs4t"]
 
-[ext_resource type="Script" path="res://Scripts/Trail.gd" id="1_pownx"]
+[ext_resource type="Script" path="res://Scripts/Trail.gd" id="1_4six0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mk23c"]
 
@@ -25,4 +25,4 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
-script = ExtResource("1_pownx")
+script = ExtResource("1_4six0")

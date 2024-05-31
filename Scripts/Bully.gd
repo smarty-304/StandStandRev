@@ -37,10 +37,10 @@ func _ready():
 
 func _process(_delta):
 	#Input
-	if (Input.is_action_just_pressed("left") and 	not( isRushing or isCoolDown)and (not horizontalMovement and lowSide)) or (
-		Input.is_action_just_pressed("right") and 	not( isRushing or isCoolDown)and (not horizontalMovement and not lowSide)) or (
-		Input.is_action_just_pressed("up") and 		not( isRushing or isCoolDown)and (horizontalMovement and lowSide)) or (
-		Input.is_action_just_pressed("down") and 	not( isRushing or isCoolDown)and (horizontalMovement and not lowSide)):
+	if (Input.is_action_just_pressed("right") and 	not( isRushing or isCoolDown)and (not horizontalMovement and lowSide)) or (
+		Input.is_action_just_pressed("left") and 	not( isRushing or isCoolDown)and (not horizontalMovement and not lowSide)) or (
+		Input.is_action_just_pressed("down") and 		not( isRushing or isCoolDown)and (horizontalMovement and lowSide)) or (
+		Input.is_action_just_pressed("up") and 	not( isRushing or isCoolDown)and (horizontalMovement and not lowSide)):
 		isRushing = true
 		collision_shape_2d.disabled = false
 		speed = rushSpeed
