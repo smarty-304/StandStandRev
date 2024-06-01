@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c88h1jonb5v7g"]
+[gd_scene load_steps=16 format=3 uid="uid://c88h1jonb5v7g"]
 
-[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_xidmx"]
+[ext_resource type="Script" path="res://Scenes/loose.gd" id="1_gqoc3"]
 [ext_resource type="Texture2D" uid="uid://e654lntgo70c" path="res://Sprites/dancer_dad_sheet.png" id="2_yikev"]
 [ext_resource type="PackedScene" uid="uid://b8wllvaj5c2ap" path="res://mini_anim.tscn" id="4_3d230"]
 [ext_resource type="Texture2D" uid="uid://50ajppmivtak" path="res://Sprites/main_background.png" id="4_welmc"]
+[ext_resource type="AudioStream" uid="uid://v6mfoqgyj6pn" path="res://Sound/253168__suntemple__sfx-ui-button-click.wav" id="5_8pei5"]
+[ext_resource type="Texture2D" uid="uid://dd302ruhihp5y" path="res://Sprites/game_logo.png" id="6_mvrwq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ft5vw"]
 atlas = ExtResource("2_yikev")
@@ -87,14 +89,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Win" type="Control"]
+[node name="Loose" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xidmx")
+script = ExtResource("1_gqoc3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -178,6 +180,16 @@ position = Vector2(889, 608)
 scale = Vector2(-0.5, 0.5)
 animation = &"lady"
 frame_progress = 0.0721488
+
+[node name="ButtonPress" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8pei5")
+volume_db = 24.0
+bus = &"SFX"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(524, 870)
+scale = Vector2(0.201531, 0.201531)
+texture = ExtResource("6_mvrwq")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

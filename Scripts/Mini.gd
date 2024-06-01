@@ -3,7 +3,15 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $MiniAnim
 @onready var hit_stop = $hitStop
 
+@onready var william_scream = $william
+@onready var impact_bell_1 = $impactBell1
+@onready var impact_bell_2 = $impactBell2
+@onready var impact_bell_3 = $impactBell3
+@onready var impact_bell_4 = $impactBell4
+@onready var impact_bell_5 = $impactBell5
+
 @onready var timer = $Timer
+
 
 var evilBully
 
@@ -64,6 +72,7 @@ func _on_hit_stop_timeout():
 
 
 func _on_area_2d_body_entered(body):
+
 	evilBully = body
 	hit_stop.start()
 	evilBully.Combo()

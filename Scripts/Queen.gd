@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var loose = $Loose
 @onready var queen = $"."
+@onready var scream = $Scream
 
 
 var direction
@@ -52,13 +53,14 @@ func setRandomDir():
 	direction = Vector2(randf_range(-1,1), randf_range(-1,1))
 
 func _on_area_2d_body_entered(body):
-	animated_sprite_2d.play("loose")
-	var tweenSize = create_tween()
-	var tweenRot = create_tween()
-	tweenRot.tween_property(queen,"rotation", 1,2 )
-	tweenSize.tween_property(queen, "scale", Vector2(8,8),2)
-	
-	loose.start()
+	if loose.time_left == 0:
+		animated_sprite_2d.play("loose")
+		var tweenSize = create_tween()
+		var tweenRot = create_tween()
+		tweenRot.tween_property(queen,"rotation", 1,2 )
+		tweenSize.tween_property(queen, "scale", Vector2(8,8),2)
+		scream.play()
+		loose.start()
 
 func _on_loose_timeout():
 	get_tree().change_scene_to_file("res://Scenes/loose.tscn")

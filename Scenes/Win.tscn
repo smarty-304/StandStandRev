@@ -1,9 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://bd51eawrb10ba"]
+[gd_scene load_steps=19 format=3 uid="uid://bd51eawrb10ba"]
 
-[ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_3lko2"]
+[ext_resource type="Script" path="res://Scenes/Win.gd" id="1_ueoao"]
 [ext_resource type="Texture2D" uid="uid://uybmkx41n7lf" path="res://Sprites/pirouette_sheet.png" id="2_hr54r"]
 [ext_resource type="Texture2D" uid="uid://dha1ylj1o3f0s" path="res://Sprites/pirouette_sketch.png" id="2_svrri"]
 [ext_resource type="Texture2D" uid="uid://50ajppmivtak" path="res://Sprites/main_background.png" id="3_xk60l"]
+[ext_resource type="AudioStream" uid="uid://tstwnf2h3weh" path="res://Sound/624847__gerynh__yey-happy-girl.mp3" id="5_7uh43"]
+[ext_resource type="AudioStream" uid="uid://v6mfoqgyj6pn" path="res://Sound/253168__suntemple__sfx-ui-button-click.wav" id="6_4joqd"]
+[ext_resource type="Texture2D" uid="uid://dd302ruhihp5y" path="res://Sprites/game_logo.png" id="7_uyrl7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3njjo"]
 atlas = ExtResource("2_hr54r")
@@ -123,7 +126,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3lko2")
+script = ExtResource("1_ueoao")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -174,6 +177,21 @@ z_index = -5
 position = Vector2(512, 512)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_xk60l")
+
+[node name="yay" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_7uh43")
+volume_db = 20.0
+bus = &"SFX"
+
+[node name="ButtonPress" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_4joqd")
+volume_db = 20.0
+bus = &"SFX"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(512, 892)
+scale = Vector2(0.345414, 0.345414)
+texture = ExtResource("7_uyrl7")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
