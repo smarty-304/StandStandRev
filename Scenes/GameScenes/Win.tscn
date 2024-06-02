@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bd51eawrb10ba"]
 
-[ext_resource type="Script" path="res://Scenes/Win.gd" id="1_ueoao"]
+[ext_resource type="Script" path="res://Scripts/Win.gd" id="1_ueoao"]
 [ext_resource type="Texture2D" uid="uid://uybmkx41n7lf" path="res://Sprites/pirouette_sheet.png" id="2_hr54r"]
 [ext_resource type="Texture2D" uid="uid://dha1ylj1o3f0s" path="res://Sprites/pirouette_sketch.png" id="2_svrri"]
 [ext_resource type="Texture2D" uid="uid://50ajppmivtak" path="res://Sprites/main_background.png" id="3_xk60l"]

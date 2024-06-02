@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Stand Stand Revolution"
 config/version="1.0.2"
-run/main_scene="res://Scenes/menu.tscn"
+run/main_scene="res://Scenes/GameScenes/menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/image="res://Sprites/bouncer_sketch.png"
 config/icon="res://Sprites/pirouette_sketch.png"
@@ -20,7 +20,7 @@ boot_splash/minimum_display_time=1000
 
 [autoload]
 
-Music="*res://Scenes/Music.tscn"
+Music="*res://Scenes/Assets/Music.tscn"
 
 [display]
 

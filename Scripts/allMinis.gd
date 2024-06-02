@@ -48,5 +48,5 @@ func gotHit(child):
 
 
 func winning():
-	get_tree().change_scene_to_file("res://Scenes/Win.tscn")
+	get_tree().change_scene_to_file("res://Scenes/GameScenes/Win.tscn")
 	

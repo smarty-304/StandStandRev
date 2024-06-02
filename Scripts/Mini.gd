@@ -2,6 +2,7 @@ extends CharacterBody2D
 @onready var tile_map = $"../../TileMap"
 @onready var animated_sprite_2d = $MiniAnim
 @onready var hit_stop = $hitStop
+@onready var collision_shape_2d = $CollisionShape2D
 
 @onready var william_scream = $william
 @onready var impact_bell_1 = $impactBell1
@@ -12,6 +13,7 @@ extends CharacterBody2D
 
 @onready var timer = $Timer
 
+var enemyBody
 
 var evilBully
 
@@ -19,6 +21,7 @@ var nextDirection
 
 signal iGotHit(i)
 
+var deactivateMovement = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,7 +33,8 @@ func _ready():
 
 
 func move(direction: Vector2):
-	
+	if deactivateMovement:
+		return
 	# Get cur Tile
 	var currentTile: Vector2i = tile_map.local_to_map(global_position)
 	#Get target Tile
@@ -68,14 +72,24 @@ func setNexDirection():
 func _on_hit_stop_timeout():
 	evilBully.modulate = Color(1, 1, 1, 1)
 	evilBully.speed = evilBully.rushSpeed
-	queue_free()
+	collision_shape_2d.disabled = true
+	
+	
 
 
 func _on_area_2d_body_entered(body):
-
+	deactivateMovement = true
+	var sizeAway = create_tween()
+	var flyAway = create_tween()
+	flyAway.tween_property(self,"position",(position-body.position)*30 ,.5)
+	sizeAway.tween_property(self,"scale",Vector2(2,2),.5)
 	evilBully = body
 	hit_stop.start()
 	evilBully.Combo()
 	evilBully.speed = 0
 	evilBully.modulate = Color(0, 0, 0, 1)
 	iGotHit.emit(self)
+
+
+func _on_flyaway_timeout():
+	queue_free()

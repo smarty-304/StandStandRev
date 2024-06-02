@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://c88h1jonb5v7g"]
 
-[ext_resource type="Script" path="res://Scenes/loose.gd" id="1_gqoc3"]
+[ext_resource type="Script" path="res://Scripts/loose.gd" id="1_gqoc3"]
 [ext_resource type="Texture2D" uid="uid://e654lntgo70c" path="res://Sprites/dancer_dad_sheet.png" id="2_yikev"]
 [ext_resource type="PackedScene" uid="uid://b8wllvaj5c2ap" path="res://mini_anim.tscn" id="4_3d230"]
 [ext_resource type="Texture2D" uid="uid://50ajppmivtak" path="res://Sprites/main_background.png" id="4_welmc"]

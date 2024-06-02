@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://qteje7nwu7sx"]
 
-[ext_resource type="Script" path="res://Scenes/QueenTrail.gd" id="1_pbcxj"]
+[ext_resource type="Script" path="res://Scripts/QueenTrail.gd" id="1_pbcxj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_67yof"]
 blend_mode = 1

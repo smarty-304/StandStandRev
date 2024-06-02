@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Queen.gd" id="1_fqe4u"]
 [ext_resource type="Texture2D" uid="uid://dha1ylj1o3f0s" path="res://Sprites/pirouette_sketch.png" id="2_5uly7"]
 [ext_resource type="Texture2D" uid="uid://uybmkx41n7lf" path="res://Sprites/pirouette_sheet.png" id="3_til3u"]
-[ext_resource type="PackedScene" uid="uid://bpk6e2cldvs4t" path="res://Scenes/trail.tscn" id="4_te2bw"]
+[ext_resource type="PackedScene" uid="uid://bpk6e2cldvs4t" path="res://Scenes/Assets/trail.tscn" id="4_te2bw"]
 [ext_resource type="AudioStream" uid="uid://dabl0ynxuha3f" path="res://Sound/400182__tomattka__girl-screaming_04.wav" id="5_s5vsn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubx10"]

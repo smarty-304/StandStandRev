@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7jkh1d77e1s4"]
+
+[ext_resource type="PackedScene" uid="uid://b8wllvaj5c2ap" path="res://mini_anim.tscn" id="1_qwf2k"]
+
+[node name="minisMenu" type="Node2D"]
+z_index = 90
+scale = Vector2(0.8, 0.8)
+
+[node name="MiniAnim" parent="." instance=ExtResource("1_qwf2k")]
