@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bny4g8les4kt6"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_8wxdk"]
-[ext_resource type="Texture2D" uid="uid://dha1ylj1o3f0s" path="res://Sprites/pirouette_sketch.png" id="2_xwxg7"]
+[ext_resource type="Texture2D" uid="uid://bgmhpe6xi2fsa" path="res://Sprites/single_pirouette.png" id="2_3ao88"]
 [ext_resource type="Texture2D" uid="uid://50ajppmivtak" path="res://Sprites/main_background.png" id="3_nn5j0"]
 [ext_resource type="AudioStream" uid="uid://v6mfoqgyj6pn" path="res://Sound/253168__suntemple__sfx-ui-button-click.wav" id="4_m477w"]
 [ext_resource type="Texture2D" uid="uid://dd302ruhihp5y" path="res://Sprites/game_logo.png" id="5_u73dp"]
@@ -17,33 +17,51 @@ script = ExtResource("1_8wxdk")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -256.0
+offset_top = -137.0
 offset_right = 256.0
-offset_bottom = 617.0
+offset_bottom = 549.0
 grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_xwxg7")
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "Play"
 
+[node name="Tutorial" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Tutorial
+"
+
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Option"
 
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Credits
+"
+
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_3ao88")
+expand_mode = 1
 
 [node name="MainBackground" type="Sprite2D" parent="."]
 z_index = -5
@@ -57,10 +75,12 @@ volume_db = 24.0
 bus = &"SFX"
 
 [node name="GameLogo" type="Sprite2D" parent="."]
-position = Vector2(510, 830)
+position = Vector2(510, 167)
 scale = Vector2(0.424745, 0.424745)
 texture = ExtResource("5_u73dp")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cjqhut1o3jeie"]
 
 [ext_resource type="Script" path="res://Scripts/Mini.gd" id="1_f2jqs"]
-[ext_resource type="PackedScene" uid="uid://b8wllvaj5c2ap" path="res://mini_anim.tscn" id="2_dstsm"]
+[ext_resource type="PackedScene" uid="uid://b8wllvaj5c2ap" path="res://Scenes/Assets/mini_anim.tscn" id="2_dstsm"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_08hgf"]
 polygon = PackedVector2Array(-6.25, 8.75, 6.25, 8.75, 6.25, 6.25, 6.25, 3.75, 6.25, 0, 5, -6.25, 2.5, -8.75, -3.75, -8.75, -6.25, -2.5, -7.5, 2.5)
@@ -24,6 +24,8 @@ wait_time = 2.0
 autostart = true
 
 [node name="MiniAnim" parent="." instance=ExtResource("2_dstsm")]
+frame = 5
+frame_progress = 0.120896
 
 [node name="turnAroundTimer" type="Timer" parent="."]
 wait_time = 10.0

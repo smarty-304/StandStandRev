@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c7jkh1d77e1s4"]
 
-[ext_resource type="PackedScene" uid="uid://b8wllvaj5c2ap" path="res://mini_anim.tscn" id="1_qwf2k"]
+[ext_resource type="PackedScene" uid="uid://b8wllvaj5c2ap" path="res://Scenes/Assets/mini_anim.tscn" id="1_qwf2k"]
 
 [node name="minisMenu" type="Node2D"]
 z_index = 90

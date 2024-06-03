@@ -1,38 +1,37 @@
-[gd_scene load_steps=21 format=3 uid="uid://cvpiwx081xtad"]
+[gd_scene load_steps=26 format=3 uid="uid://cvpiwx081xtad"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_c1p4s"]
 [ext_resource type="Script" path="res://Scripts/LevelTimmer.gd" id="2_r2rvw"]
-[ext_resource type="Texture2D" uid="uid://h41iov1ag8c7" path="res://Sprites/smalltile_stage.png" id="3_k02yv"]
+[ext_resource type="Script" path="res://Scenes/GameScenes/Camera2D.gd" id="2_sinu2"]
 [ext_resource type="PackedScene" uid="uid://dr1n0gdxqef55" path="res://Scenes/Assets/queen.tscn" id="3_mr345"]
+[ext_resource type="StyleBox" uid="uid://btwn3d7hvr08k" path="res://Combo.tres" id="4_64ufu"]
+[ext_resource type="Texture2D" uid="uid://yc454jttdr7v" path="res://Sprites/combo_counter_max.png" id="4_tqvm0"]
 [ext_resource type="PackedScene" uid="uid://cjqhut1o3jeie" path="res://Scenes/Assets/minis.tscn" id="4_ulhwl"]
 [ext_resource type="PackedScene" uid="uid://br3ht37gdw4sy" path="res://Scenes/Assets/bully.tscn" id="5_65wrh"]
 [ext_resource type="Script" path="res://Scripts/allMinis.gd" id="5_iwjhi"]
+[ext_resource type="Texture2D" uid="uid://d2byvirrmqckw" path="res://Sprites/combo_counter.png" id="5_n5ib6"]
 [ext_resource type="AudioStream" uid="uid://yowi25wikbet" path="res://Sound/MiniImpact/impactBell_heavy_000.ogg" id="7_lf6pw"]
+[ext_resource type="Script" path="res://Scenes/GameScenes/ComboTimerProgress.gd" id="7_pnyd2"]
 [ext_resource type="PackedScene" uid="uid://741oangkp2fb" path="res://Scenes/Assets/light.tscn" id="7_qdpux"]
 [ext_resource type="Texture2D" uid="uid://50ajppmivtak" path="res://Sprites/main_background.png" id="8_o8k2j"]
+[ext_resource type="PackedScene" uid="uid://wetgq8a4r46b" path="res://Scenes/Assets/tile_map.tscn" id="8_tgxip"]
 [ext_resource type="AudioStream" uid="uid://bmmpubd35le4j" path="res://Sound/MiniImpact/impactBell_heavy_001.ogg" id="8_u6x6m"]
 [ext_resource type="AudioStream" uid="uid://cijy2180n2ibg" path="res://Sound/MiniImpact/impactBell_heavy_002.ogg" id="9_ys2i5"]
 [ext_resource type="AudioStream" uid="uid://61qdnu28qwdi" path="res://Sound/MiniImpact/impactBell_heavy_003.ogg" id="10_h7r5a"]
 [ext_resource type="AudioStream" uid="uid://clh47xgxhyo86" path="res://Sound/MiniImpact/impactBell_heavy_004.ogg" id="11_2mgwa"]
 [ext_resource type="AudioStream" uid="uid://1gf2m2tk0m0k" path="res://Sound/MiniImpact/Wilhelm_Scream.ogg" id="12_u6xml"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g8nil"]
-texture = ExtResource("3_k02yv")
-0:0/0 = 0
-0:0/0/custom_data_0 = true
-1:0/0 = 0
-1:0/0/custom_data_1 = true
-0:1/0 = 0
-0:1/0/custom_data_2 = true
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6j8u"]
+bg_color = Color(1, 0, 0, 0.529412)
+skew = Vector2(0.72, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0)
 
-[sub_resource type="TileSet" id="TileSet_htc6d"]
-custom_data_layer_0/name = "dance"
-custom_data_layer_0/type = 1
-custom_data_layer_1/name = "security"
-custom_data_layer_1/type = 1
-custom_data_layer_2/name = "back"
-custom_data_layer_2/type = 1
-sources/9 = SubResource("TileSetAtlasSource_g8nil")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60f8n"]
+bg_color = Color(0.309804, 1, 0.0666667, 1)
 
 [sub_resource type="Animation" id="Animation_n18hd"]
 length = 10.0
@@ -105,51 +104,105 @@ position = Vector2(87, 89)
 scale = Vector2(0.1, 0.1)
 offset = Vector2(-33.085, -36.97)
 zoom = Vector2(4.465, 4.465)
-
-[node name="Label" type="Label" parent="Camera2D"]
-offset_left = -730.42
-offset_top = -1522.08
-offset_right = -650.42
-offset_bottom = -1492.08
-scale = Vector2(10, 10)
-text = "00:00
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("2_r2rvw")
-
-[node name="MaxCombo" type="Label" parent="Camera2D"]
-offset_left = -1378.47
-offset_top = 514.621
-offset_right = -1281.47
-offset_bottom = 537.621
-scale = Vector2(7, 7)
-text = "
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Combo" type="Label" parent="Camera2D"]
-offset_left = -291.74
-offset_top = 514.621
-offset_right = -194.74
-offset_bottom = 537.621
-scale = Vector2(7, 7)
-text = "
-"
-horizontal_alignment = 1
-vertical_alignment = 1
+script = ExtResource("2_sinu2")
 
 [node name="Timer" type="Timer" parent="Camera2D"]
-wait_time = 61.0
+wait_time = 45.0
 one_shot = true
 autostart = true
 
-[node name="TileMap" type="TileMap" parent="."]
-z_index = -1
-tile_set = SubResource("TileSet_htc6d")
-format = 2
-layer_0/tile_data = PackedInt32Array(-1, 9, 0, -65536, 9, 0, -65535, 9, 0, -65534, 9, 0, -65533, 9, 0, -65532, 9, 0, -65531, 9, 0, -65530, 9, 0, 6, 9, 0, 65542, 9, 0, 131078, 9, 0, 196614, 9, 0, 262150, 9, 0, 327686, 9, 0, 393222, 9, 0, 393221, 9, 0, 393220, 9, 0, 393219, 9, 0, 393218, 9, 0, 393217, 9, 0, 393216, 9, 0, 458751, 9, 0, 393215, 9, 0, 327679, 9, 0, 262144, 9, 0, 262143, 9, 0, 196607, 9, 0, 131071, 9, 0, 65535, 9, 0, 0, 9, 0, 1, 9, 0, 2, 9, 0, 3, 9, 0, 4, 9, 0, 5, 9, 0, 196611, 9, 0, 131075, 9, 0, 65539, 9, 0, 65538, 9, 0, 65537, 9, 0, 65536, 9, 0, 131072, 9, 0, 196608, 9, 0, 196609, 9, 0, 131073, 9, 0, 131074, 9, 0, 196610, 9, 0, 262146, 9, 0, 262145, 9, 0, 327681, 9, 0, 327680, 9, 0, 327682, 9, 0, 327683, 9, 0, 262147, 9, 0, 262148, 9, 0, 196612, 9, 0, 131076, 9, 0, 65540, 9, 0, 65541, 9, 0, 131077, 9, 0, 196613, 9, 0, 262149, 9, 0, 327684, 9, 0, -65538, 65545, 0, -65537, 65545, 0, -131072, 65545, 0, -131071, 65545, 0, -131070, 65545, 0, -131069, 65545, 0, -131068, 65545, 0, -131067, 65545, 0, -131066, 65545, 0, -131065, 65545, 0, -65529, 65545, 0, 7, 65545, 0, 65543, 65545, 0, 131079, 65545, 0, 196615, 65545, 0, 262151, 65545, 0, 327687, 65545, 0, 393223, 65545, 0, 458759, 65545, 0, 458758, 65545, 0, 458757, 65545, 0, 458756, 65545, 0, 458755, 65545, 0, 458754, 65545, 0, 458753, 65545, 0, 458752, 65545, 0, 524287, 65545, 0, 524286, 65545, 0, 458750, 65545, 0, 393214, 65545, 0, 327678, 65545, 0, 262142, 65545, 0, 196606, 65545, 0, 131070, 65545, 0, 65534, 65545, 0, -2, 65545, 0, 327685, 9, 0)
+[node name="TimerLabel" type="Label" parent="Camera2D"]
+offset_left = -556.942
+offset_top = -1494.99
+offset_right = -476.942
+offset_bottom = -1464.99
+scale = Vector2(10, 10)
+text = "00:00
+"
+script = ExtResource("2_r2rvw")
+
+[node name="MaxComboPanel" type="Panel" parent="Camera2D"]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -182.0
+offset_top = 454.0
+offset_right = 576.0
+offset_bottom = 685.0
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("4_64ufu")
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/MaxComboPanel"]
+layout_mode = 0
+offset_right = 751.0
+offset_bottom = 224.0
+texture = ExtResource("4_tqvm0")
+expand_mode = 1
+
+[node name="MaxCombo" type="Label" parent="Camera2D/MaxComboPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 149.339
+offset_top = -95.0108
+offset_right = 164.339
+offset_bottom = -72.0108
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(7, 7)
+text = "4"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ComboPanel" type="Panel" parent="Camera2D"]
+offset_left = -1169.0
+offset_top = 444.0
+offset_right = -401.0
+offset_bottom = 675.0
+theme_override_styles/panel = ExtResource("4_64ufu")
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/ComboPanel"]
+layout_mode = 0
+offset_right = 773.0
+offset_bottom = 231.0
+texture = ExtResource("5_n5ib6")
+expand_mode = 1
+
+[node name="Combo" type="Label" parent="Camera2D/ComboPanel"]
+layout_mode = 0
+offset_left = 518.34
+offset_top = 40.5221
+offset_right = 545.34
+offset_bottom = 63.5221
+scale = Vector2(7, 7)
+text = "56"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComboTimerProgress" type="ProgressBar" parent="Camera2D/ComboPanel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/background = SubResource("StyleBoxFlat_p6j8u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_60f8n")
+value = 50.0
+script = ExtResource("7_pnyd2")
+
+[node name="ComboTimer" type="Timer" parent="Camera2D/ComboPanel"]
+one_shot = true
+
+[node name="TileMap" parent="." instance=ExtResource("8_tgxip")]
 
 [node name="Queen" parent="." instance=ExtResource("3_mr345")]
 position = Vector2(47.8559, 46.1518)
@@ -278,6 +331,10 @@ position = Vector2(62.8109, 58.7536)
 scale = Vector2(0.176496, 0.176496)
 texture = ExtResource("8_o8k2j")
 
+[node name="WinningTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Camera2D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Camera2D/ComboPanel/ComboTimer" to="Bullies/BullyLeft" method="_on_combo_timer_timeout"]
 [connection signal="queenTouch" from="Queen" to="." method="_on_queen_queen_touch"]
 [connection signal="iGotHit" from="allMinis/minis" to="allMinis" method="_on_minis_i_got_hit"]
 [connection signal="iGotHit" from="allMinis/minis3" to="allMinis" method="_on_minis_i_got_hit"]
@@ -289,3 +346,4 @@ texture = ExtResource("8_o8k2j")
 [connection signal="iGotHit" from="allMinis/minis4" to="allMinis" method="_on_minis_4_i_got_hit"]
 [connection signal="iGotHit" from="allMinis/minis6" to="allMinis" method="_on_minis_6_i_got_hit"]
 [connection signal="iGotHit" from="allMinis/minis2" to="allMinis" method="_on_minis_2_i_got_hit"]
+[connection signal="timeout" from="WinningTimer" to="allMinis" method="_on_winning_timer_timeout"]

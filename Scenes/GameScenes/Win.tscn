@@ -162,7 +162,9 @@ vertical_alignment = 1
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "Play Again"
+text = "Play Again
+
+With extra booze!"
 
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

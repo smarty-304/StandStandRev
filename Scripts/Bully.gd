@@ -16,6 +16,7 @@ var cooldownSpeedFactor = 1
 @export var lowSide: bool = true
 @export var directionDash = Vector2.RIGHT
 @export var directionRegular = Vector2.UP
+@onready var just_turned_timer = $justTurnedTimer
 
 var speed
 
@@ -29,22 +30,36 @@ var dashLeftRight: bool = true
 var combo: int
 var maxCombo: int
 var maxComboActive = false
-@onready var max_comboLabel = $"../../Camera2D/MaxCombo"
-@onready var comboLabel = $"../../Camera2D/Combo"
+
+var justTurned = false
+
+#Labels
 
 
+@onready var max_combo_panel = $"../../Camera2D/MaxComboPanel"
+@onready var combo_panel = $"../../Camera2D/ComboPanel"
 
 
-@onready var comboTimer = $ComboTimer
+@onready var combo_Timer = $"../../Camera2D/ComboPanel/ComboTimer"
+@onready var comboLabel:Label = $"../../Camera2D/ComboPanel/Combo"
+@onready var maxComboLabel: Label = $"../../Camera2D/MaxComboPanel/MaxCombo"
 
 signal bully_touches_smth(something)
 
 func _ready():
+	if Singelton.maxCombo > 0:
+		max_combo_panel.visible = true
+		maxComboLabel.text = str(Singelton.maxCombo)
+	else:
+		max_combo_panel.visible = false
 	#Sets starting Variables
 	rushSpeed = rushSpeedFactor * normalSpeed
 	speed = normalSpeed
 	direction = directionRegular
 	collision_shape_2d.disabled = true
+	maxComboLabel.text =""
+	comboLabel.text = ""
+	combo_panel.visible = false
 
 func _process(_delta):
 	#Input
@@ -79,7 +94,9 @@ func _process(_delta):
 			coolDown()
 		elif isCoolDown:
 			coolUp()
-		else:
+		elif not justTurned:
+			justTurned = true
+			just_turned_timer.start()
 			direction= - direction
 			if horizontalMovement:
 				animated_sprite_2d.flip_h = not animated_sprite_2d.flip_h
@@ -158,23 +175,24 @@ func coolUp():
 	
 func Combo():	
 	combo = combo + 1
-	comboTimer.start()
+	combo_Timer.start()
 	if combo > 1:
-		comboLabel.text = "Combo: " + str(combo)
+		combo_panel.visible = true
+		comboLabel.text =str(combo)
+		
 	
 	
-	if combo > level.maxCombo:
-		level.maxCombo = combo
-		max_comboLabel.text = "MaxCombo: " + str(level.maxCombo)
-	
-	
-	
-	
-	
-	
-	
-
+	if combo > Singelton.maxCombo:
+		Singelton.maxCombo = combo
+		maxComboLabel.text = str(Singelton.maxCombo)
+		max_combo_panel.visible = true
+		
 
 func _on_combo_timer_timeout():
 	combo = 0
 	comboLabel.text =""
+	combo_panel.visible = false
+
+
+func _on_just_turned_timer_timeout():
+	justTurned = false

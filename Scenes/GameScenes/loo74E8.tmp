@@ -1,0 +1,221 @@
+[gd_scene load_steps=19 format=3 uid="uid://c88h1jonb5v7g"]
+
+[ext_resource type="Script" path="res://Scripts/loose.gd" id="1_gqoc3"]
+[ext_resource type="StyleBox" uid="uid://btwn3d7hvr08k" path="res://Combo.tres" id="2_qcn4m"]
+[ext_resource type="Texture2D" uid="uid://e654lntgo70c" path="res://Sprites/dancer_dad_sheet.png" id="2_yikev"]
+[ext_resource type="PackedScene" uid="uid://b8wllvaj5c2ap" path="res://Scenes/Assets/mini_anim.tscn" id="4_3d230"]
+[ext_resource type="Texture2D" uid="uid://50ajppmivtak" path="res://Sprites/main_background.png" id="4_welmc"]
+[ext_resource type="AudioStream" uid="uid://v6mfoqgyj6pn" path="res://Sound/253168__suntemple__sfx-ui-button-click.wav" id="5_8pei5"]
+[ext_resource type="Texture2D" uid="uid://dd302ruhihp5y" path="res://Sprites/game_logo.png" id="6_mvrwq"]
+[ext_resource type="Texture2D" uid="uid://yc454jttdr7v" path="res://Sprites/combo_counter_max.png" id="8_fyyjy"]
+[ext_resource type="Script" path="res://Scenes/GameScenes/MaxComboLable.gd" id="9_2mhos"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft5vw"]
+atlas = ExtResource("2_yikev")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4njr8"]
+atlas = ExtResource("2_yikev")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yu7e4"]
+atlas = ExtResource("2_yikev")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwbm5"]
+atlas = ExtResource("2_yikev")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xi50b"]
+atlas = ExtResource("2_yikev")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl21a"]
+atlas = ExtResource("2_yikev")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dmca"]
+atlas = ExtResource("2_yikev")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xru1"]
+atlas = ExtResource("2_yikev")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxhxi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft5vw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4njr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yu7e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwbm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yu7e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4njr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft5vw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi50b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl21a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dmca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xru1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dmca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl21a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi50b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Loose" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gqoc3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -308.5
+offset_right = 256.0
+offset_bottom = 308.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "YOU LOSE!😒"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Play Again"
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Option"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="MaxComboPanel" type="Panel" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_qcn4m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer"]
+position = Vector2(645, 657)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_uxhxi")
+autoplay = "default"
+frame_progress = 0.805197
+speed_scale = 2.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="MarginContainer"]
+position = Vector2(-107, 657)
+scale = Vector2(-0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_uxhxi")
+autoplay = "default"
+frame_progress = 0.0424465
+speed_scale = 2.0
+
+[node name="MainBackground" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(512, 512)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_welmc")
+
+[node name="MiniAnim2" parent="." instance=ExtResource("4_3d230")]
+position = Vector2(303, 628)
+scale = Vector2(0.421875, 0.421875)
+animation = &"lady"
+frame_progress = 0.0721488
+
+[node name="MiniAnim3" parent="." instance=ExtResource("4_3d230")]
+position = Vector2(741.951, 630.049)
+scale = Vector2(-0.413872, 0.413872)
+animation = &"lady"
+frame_progress = 0.0592139
+
+[node name="ButtonPress" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8pei5")
+volume_db = 24.0
+bus = &"SFX"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(509, 148.5)
+scale = Vector2(0.28699, 0.28699)
+texture = ExtResource("6_mvrwq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+offset_left = 272.0
+offset_top = 751.0
+offset_right = 784.0
+offset_bottom = 951.0
+texture = ExtResource("8_fyyjy")
+expand_mode = 1
+
+[node name="MaxCombo" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 90.0
+offset_top = -90.0
+offset_right = 105.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(7, 7)
+text = "4"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("9_2mhos")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

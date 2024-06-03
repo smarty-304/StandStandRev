@@ -1,6 +1,5 @@
 extends Node2D
 @onready var tile_map = $TileMap
-
 var danceTiles = []
 var secTiles = []
 var backTiles = []
@@ -104,4 +103,12 @@ func GetGlobalPosFromTileValue(value):
 
 
 func _on_minis_3_i_got_hit():
+	pass # Replace with function body.
+
+
+func _on_timer_timeout():
+	get_tree().change_scene_to_file("res://Scenes/GameScenes/loose.tscn")
+
+
+func _on_winning_timer_timeout():
 	pass # Replace with function body.

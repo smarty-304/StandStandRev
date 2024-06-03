@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://wcpspd32pck6"]
+
+[ext_resource type="Script" path="res://tutorial_level.gd" id="1_iex1a"]
+[ext_resource type="PackedScene" uid="uid://dp5f6qx113qp8" path="res://Scenes/Assets/dialogue_box.tscn" id="2_2g6kj"]
+[ext_resource type="PackedScene" uid="uid://wetgq8a4r46b" path="res://Scenes/Assets/tile_map.tscn" id="3_twkqe"]
+[ext_resource type="PackedScene" uid="uid://br3ht37gdw4sy" path="res://Scenes/Assets/bully.tscn" id="4_v7uvn"]
+[ext_resource type="Script" path="res://Scenes/Assets/tutorialBully.gd" id="5_hbgqv"]
+[ext_resource type="Texture2D" uid="uid://djw7ip3pylyjw" path="res://Sprites/drink_maitai.png" id="6_2wld4"]
+[ext_resource type="Texture2D" uid="uid://50ajppmivtak" path="res://Sprites/main_background.png" id="7_1fwky"]
+
+[node name="TutorialLevel" type="Node2D"]
+scale = Vector2(15.4379, 15.4379)
+script = ExtResource("1_iex1a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.4, 0.4)
+
+[node name="DialogueBox" parent="." instance=ExtResource("2_2g6kj")]
+
+[node name="TileMap" parent="." instance=ExtResource("3_twkqe")]
+scale = Vector2(2, 2)
+layer_0/tile_data = PackedInt32Array(-1, 9, 0, -65536, 9, 0, -65535, 9, 0, -65534, 65545, 0, 131071, 65545, 0, 65535, 9, 0, 0, 9, 0, 1, 9, 0, 2, 65545, 0, 65538, 65545, 0, 65537, 65545, 0, 65536, 65545, 0, -65538, 65545, 0, -65537, 65545, 0, -131072, 65545, 0, -131071, 65545, 0, -131070, 65545, 0, 131070, 65545, 0, 65534, 65545, 0, -2, 65545, 0)
+
+[node name="Bully" parent="." instance=ExtResource("4_v7uvn")]
+position = Vector2(-47.9986, -15.8052)
+scale = Vector2(2, 2)
+script = ExtResource("5_hbgqv")
+normalSpeed = 25
+rushSpeedFactor = 10
+maxDistance = 1980.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Bully"]
+position = Vector2(6.6071, 2.8501)
+scale = Vector2(0.0509882, 0.0509882)
+texture = ExtResource("6_2wld4")
+
+[node name="MainBackground" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(4.59906, -10.0402)
+scale = Vector2(0.15799, 0.15799)
+texture = ExtResource("7_1fwky")
+
+[node name="NextSceneTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="TutTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="NextSceneTimer" to="." method="_on_next_scene_timer_timeout"]
+[connection signal="timeout" from="TutTimer" to="Bully" method="_on_tut_timer_timeout"]

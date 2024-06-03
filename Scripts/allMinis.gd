@@ -6,6 +6,8 @@ extends Node2D
 @onready var impact_bell_4 = $"../MiniSounds/impactBell4"
 @onready var impact_bell_5 = $"../MiniSounds/impactBell5"
 @onready var william = $"../MiniSounds/william"
+@onready var winning_timer = $"../WinningTimer"
+
 
 
 
@@ -48,5 +50,10 @@ func gotHit(child):
 
 
 func winning():
-	get_tree().change_scene_to_file("res://Scenes/GameScenes/Win.tscn")
+	winning_timer.start()
 	
+	
+
+
+func _on_winning_timer_timeout():
+	get_tree().change_scene_to_file("res://Scenes/GameScenes/Win.tscn")

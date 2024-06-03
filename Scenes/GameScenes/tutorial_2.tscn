@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkwr51jyvljlj"]
+
+[ext_resource type="PackedScene" uid="uid://wetgq8a4r46b" path="res://Scenes/Assets/tile_map.tscn" id="1_alwp0"]
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_r70rm"]
+[ext_resource type="Script" path="res://Scripts/allMinis.gd" id="2_kmdtt"]
+[ext_resource type="PackedScene" uid="uid://br3ht37gdw4sy" path="res://Scenes/Assets/bully.tscn" id="2_x6ks3"]
+[ext_resource type="PackedScene" uid="uid://cjqhut1o3jeie" path="res://Scenes/Assets/minis.tscn" id="3_im5lf"]
+[ext_resource type="Script" path="res://Scenes/Assets/dashTutbully.gd" id="3_xtaj1"]
+
+[node name="Tutorial2" type="Node2D"]
+script = ExtResource("1_r70rm")
+
+[node name="TileMap" parent="." instance=ExtResource("1_alwp0")]
+layer_0/tile_data = PackedInt32Array(-1, 9, 0, -65536, 9, 0, -65535, 9, 0, -65534, 65545, 0, 196607, 65545, 0, 131071, 9, 0, 65535, 9, 0, 0, 9, 0, 1, 9, 0, 2, 65545, 0, 65538, 65545, 0, 65537, 9, 0, 65536, 9, 0, 131072, 65545, 0, 131073, 65545, 0, 131074, 65545, 0, -65538, 65545, 0, -65537, 65545, 0, -131072, 65545, 0, -131071, 65545, 0, -131070, 65545, 0, 196606, 65545, 0, 131070, 65545, 0, 65534, 65545, 0, -2, 65545, 0)
+
+[node name="Bully" parent="TileMap" instance=ExtResource("2_x6ks3")]
+position = Vector2(7, -24)
+script = ExtResource("3_xtaj1")
+directionDash = Vector2(0, 1)
+directionRegular = Vector2(1, 0)
+
+[node name="allMinis" type="Node2D" parent="."]
+script = ExtResource("2_kmdtt")
+
+[node name="minis7" parent="allMinis" instance=ExtResource("3_im5lf")]
+position = Vector2(25, 7.00001)
+
+[node name="minis8" parent="allMinis" instance=ExtResource("3_im5lf")]
+position = Vector2(25, 24)
+
+[node name="minis9" parent="allMinis" instance=ExtResource("3_im5lf")]
+position = Vector2(9, 8)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(8, 6)
+zoom = Vector2(10, 10)
+
+[connection signal="iGotHit" from="allMinis/minis7" to="allMinis" method="_on_minis_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis8" to="allMinis" method="_on_minis_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis9" to="allMinis" method="_on_minis_i_got_hit"]

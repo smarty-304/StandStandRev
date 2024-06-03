@@ -1,0 +1,199 @@
+[gd_scene load_steps=19 format=3 uid="uid://b7pmumhsv6dx0"]
+
+[ext_resource type="Script" path="res://Scripts/Win.gd" id="1_ynenx"]
+[ext_resource type="Texture2D" uid="uid://uybmkx41n7lf" path="res://Sprites/pirouette_sheet.png" id="2_kuui6"]
+[ext_resource type="Texture2D" uid="uid://dha1ylj1o3f0s" path="res://Sprites/pirouette_sketch.png" id="3_yaaum"]
+[ext_resource type="Texture2D" uid="uid://50ajppmivtak" path="res://Sprites/main_background.png" id="4_p7jwd"]
+[ext_resource type="AudioStream" uid="uid://tstwnf2h3weh" path="res://Sound/624847__gerynh__yey-happy-girl.mp3" id="5_1ho6t"]
+[ext_resource type="AudioStream" uid="uid://v6mfoqgyj6pn" path="res://Sound/253168__suntemple__sfx-ui-button-click.wav" id="6_t0cfq"]
+[ext_resource type="Texture2D" uid="uid://dd302ruhihp5y" path="res://Sprites/game_logo.png" id="7_36t67"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3njjo"]
+atlas = ExtResource("2_kuui6")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xsvv"]
+atlas = ExtResource("2_kuui6")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sr076"]
+atlas = ExtResource("2_kuui6")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r642a"]
+atlas = ExtResource("2_kuui6")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kwx3"]
+atlas = ExtResource("2_kuui6")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbg33"]
+atlas = ExtResource("2_kuui6")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nli24"]
+atlas = ExtResource("2_kuui6")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55f8c"]
+atlas = ExtResource("2_kuui6")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cab4w"]
+atlas = ExtResource("2_kuui6")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shduu"]
+atlas = ExtResource("2_kuui6")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxhxi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3njjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xsvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr076")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r642a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr076")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r642a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr076")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r642a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xsvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3njjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kwx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbg33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nli24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbg33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kwx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3njjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55f8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cab4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shduu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cab4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55f8c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ynenx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_right = 256.0
+offset_bottom = 617.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(237, 258)
+sprite_frames = SubResource("SpriteFrames_uxhxi")
+autoplay = "default"
+frame_progress = 0.997963
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = ExtResource("3_yaaum")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Yay You finished the Tutorial!!!
+Now its Time for the real Game.🍹"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Play Again"
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Option"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="MainBackground" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(512, 512)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_p7jwd")
+
+[node name="yay" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_1ho6t")
+volume_db = 20.0
+bus = &"SFX"
+
+[node name="ButtonPress" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_t0cfq")
+volume_db = 20.0
+bus = &"SFX"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(512, 892)
+scale = Vector2(0.345414, 0.345414)
+texture = ExtResource("7_36t67")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

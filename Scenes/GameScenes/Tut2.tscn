@@ -1,0 +1,337 @@
+[gd_scene load_steps=26 format=3 uid="uid://c2cq8yc3nos3p"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_8tvwk"]
+[ext_resource type="Script" path="res://Scenes/GameScenes/Camera2D.gd" id="2_fjqru"]
+[ext_resource type="Script" path="res://Scripts/LevelTimmer.gd" id="3_qwldx"]
+[ext_resource type="StyleBox" uid="uid://btwn3d7hvr08k" path="res://Combo.tres" id="4_ohmhp"]
+[ext_resource type="Texture2D" uid="uid://yc454jttdr7v" path="res://Sprites/combo_counter_max.png" id="5_t4486"]
+[ext_resource type="Texture2D" uid="uid://d2byvirrmqckw" path="res://Sprites/combo_counter.png" id="6_aqetx"]
+[ext_resource type="Script" path="res://Scenes/GameScenes/ComboTimerProgress.gd" id="7_lyxvr"]
+[ext_resource type="PackedScene" uid="uid://wetgq8a4r46b" path="res://Scenes/Assets/tile_map.tscn" id="8_eweja"]
+[ext_resource type="Script" path="res://Scenes/GameScenes/allMinisTut2.gd" id="9_cc4i3"]
+[ext_resource type="PackedScene" uid="uid://cjqhut1o3jeie" path="res://Scenes/Assets/minis.tscn" id="11_l3bs7"]
+[ext_resource type="AudioStream" uid="uid://yowi25wikbet" path="res://Sound/MiniImpact/impactBell_heavy_000.ogg" id="12_v3rwn"]
+[ext_resource type="AudioStream" uid="uid://bmmpubd35le4j" path="res://Sound/MiniImpact/impactBell_heavy_001.ogg" id="13_6cyl1"]
+[ext_resource type="AudioStream" uid="uid://cijy2180n2ibg" path="res://Sound/MiniImpact/impactBell_heavy_002.ogg" id="14_dt4gy"]
+[ext_resource type="AudioStream" uid="uid://61qdnu28qwdi" path="res://Sound/MiniImpact/impactBell_heavy_003.ogg" id="15_thdq3"]
+[ext_resource type="AudioStream" uid="uid://clh47xgxhyo86" path="res://Sound/MiniImpact/impactBell_heavy_004.ogg" id="16_2bdb8"]
+[ext_resource type="AudioStream" uid="uid://1gf2m2tk0m0k" path="res://Sound/MiniImpact/Wilhelm_Scream.ogg" id="17_ghlmv"]
+[ext_resource type="PackedScene" uid="uid://br3ht37gdw4sy" path="res://Scenes/Assets/bully.tscn" id="18_n8l7v"]
+[ext_resource type="PackedScene" uid="uid://741oangkp2fb" path="res://Scenes/Assets/light.tscn" id="19_xcg8m"]
+[ext_resource type="Texture2D" uid="uid://50ajppmivtak" path="res://Sprites/main_background.png" id="20_4njcg"]
+[ext_resource type="PackedScene" uid="uid://2s3h027hlqsx" path="res://Scenes/Assets/dialogue_boxtut2.tscn" id="20_dvu2r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6j8u"]
+bg_color = Color(1, 0, 0, 0.529412)
+skew = Vector2(0.72, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60f8n"]
+bg_color = Color(0.309804, 1, 0.0666667, 1)
+
+[sub_resource type="Animation" id="Animation_n18hd"]
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lights/BlueLight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(97.7059, -1.0033)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lights/RedLight2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(103.688, 102.337)]
+}
+
+[sub_resource type="Animation" id="Animation_550hc"]
+resource_name = "lightMovement"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lights/BlueLight:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.996994, 1.19209e-07), Vector2(94.7149, -1.0033), Vector2(46.859, 109.36), Vector2(0.996994, 63.208), Vector2(0.996994, 1.19209e-07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lights/RedLight2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(103.688, 102.337), Vector2(-0.997002, 92.3037), Vector2(55.8319, -38.1254), Vector2(98.7029, 69.2278), Vector2(103.688, 102.337)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b0vsa"]
+_data = {
+"RESET": SubResource("Animation_n18hd"),
+"lightMovement": SubResource("Animation_550hc")
+}
+
+[node name="Level" type="Node2D"]
+scale = Vector2(1.00301, 0.99671)
+script = ExtResource("1_8tvwk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(87.7359, 99.3268)
+scale = Vector2(0.1, 0.1)
+offset = Vector2(-33.085, -36.97)
+zoom = Vector2(4.465, 4.465)
+script = ExtResource("2_fjqru")
+
+[node name="Timer" type="Timer" parent="Camera2D"]
+wait_time = 45.0
+one_shot = true
+autostart = true
+
+[node name="TimerLabel" type="Label" parent="Camera2D"]
+visible = false
+offset_left = -556.942
+offset_top = -1494.99
+offset_right = -476.942
+offset_bottom = -1464.99
+scale = Vector2(10, 10)
+text = "00:00
+"
+script = ExtResource("3_qwldx")
+
+[node name="MaxComboPanel" type="Panel" parent="Camera2D"]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -182.0
+offset_top = 454.0
+offset_right = 576.0
+offset_bottom = 685.0
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("4_ohmhp")
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/MaxComboPanel"]
+visible = false
+layout_mode = 0
+offset_right = 751.0
+offset_bottom = 224.0
+texture = ExtResource("5_t4486")
+expand_mode = 1
+
+[node name="MaxCombo" type="Label" parent="Camera2D/MaxComboPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 149.339
+offset_top = -95.0108
+offset_right = 164.339
+offset_bottom = -72.0108
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(7, 7)
+text = "4"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ComboPanel" type="Panel" parent="Camera2D"]
+visible = false
+offset_left = -1169.0
+offset_top = 444.0
+offset_right = -401.0
+offset_bottom = 675.0
+theme_override_styles/panel = ExtResource("4_ohmhp")
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/ComboPanel"]
+visible = false
+layout_mode = 0
+offset_right = 773.0
+offset_bottom = 231.0
+texture = ExtResource("6_aqetx")
+expand_mode = 1
+
+[node name="Combo" type="Label" parent="Camera2D/ComboPanel"]
+visible = false
+layout_mode = 0
+offset_left = 518.34
+offset_top = 40.5221
+offset_right = 545.34
+offset_bottom = 63.5221
+scale = Vector2(7, 7)
+text = "56"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComboTimerProgress" type="ProgressBar" parent="Camera2D/ComboPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/background = SubResource("StyleBoxFlat_p6j8u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_60f8n")
+value = 50.0
+script = ExtResource("7_lyxvr")
+
+[node name="ComboTimer" type="Timer" parent="Camera2D/ComboPanel"]
+one_shot = true
+
+[node name="TileMap" parent="." instance=ExtResource("8_eweja")]
+
+[node name="allMinis" type="Node2D" parent="."]
+script = ExtResource("9_cc4i3")
+
+[node name="minis" parent="allMinis" instance=ExtResource("11_l3bs7")]
+position = Vector2(87.7359, 7.02311)
+
+[node name="minis11" parent="allMinis" instance=ExtResource("11_l3bs7")]
+position = Vector2(88.7329, 55.1815)
+
+[node name="minis3" parent="allMinis" instance=ExtResource("11_l3bs7")]
+position = Vector2(39.88, 7.02311)
+
+[node name="minis5" parent="allMinis" instance=ExtResource("11_l3bs7")]
+position = Vector2(8.97299, 55.1815)
+
+[node name="minis7" parent="allMinis" instance=ExtResource("11_l3bs7")]
+position = Vector2(39.88, 87.2872)
+
+[node name="MiniSounds" type="Node2D" parent="."]
+
+[node name="impactBell1" type="AudioStreamPlayer2D" parent="MiniSounds"]
+stream = ExtResource("12_v3rwn")
+volume_db = 20.0
+bus = &"SFX"
+
+[node name="impactBell2" type="AudioStreamPlayer2D" parent="MiniSounds"]
+stream = ExtResource("13_6cyl1")
+volume_db = 20.0
+bus = &"SFX"
+
+[node name="impactBell3" type="AudioStreamPlayer2D" parent="MiniSounds"]
+stream = ExtResource("14_dt4gy")
+volume_db = 20.0
+bus = &"SFX"
+
+[node name="impactBell4" type="AudioStreamPlayer2D" parent="MiniSounds"]
+stream = ExtResource("15_thdq3")
+volume_db = 20.0
+bus = &"SFX"
+
+[node name="impactBell5" type="AudioStreamPlayer2D" parent="MiniSounds"]
+stream = ExtResource("16_2bdb8")
+volume_db = 20.0
+bus = &"SFX"
+
+[node name="william" type="AudioStreamPlayer2D" parent="MiniSounds"]
+stream = ExtResource("17_ghlmv")
+bus = &"SFX"
+
+[node name="Bullies" type="Node2D" parent="."]
+
+[node name="BullyLeft" parent="Bullies" instance=ExtResource("18_n8l7v")]
+position = Vector2(-23.928, 55.1815)
+rushSpeedFactor = 2
+
+[node name="BullyRight" parent="Bullies" instance=ExtResource("18_n8l7v")]
+position = Vector2(119.64, 55.1815)
+rotation = 3.14159
+scale = Vector2(1, -1)
+rushSpeedFactor = 2
+lowSide = false
+directionDash = Vector2(-1, 0)
+directionRegular = Vector2(0, 1)
+
+[node name="BullyUp" parent="Bullies" instance=ExtResource("18_n8l7v")]
+position = Vector2(39.88, -24.0792)
+rushSpeedFactor = 2
+horizontalMovement = true
+directionDash = Vector2(0, 1)
+directionRegular = Vector2(1, 0)
+
+[node name="BullyDown" parent="Bullies" instance=ExtResource("18_n8l7v")]
+position = Vector2(55.8319, 119.393)
+rotation = 3.14159
+scale = Vector2(1, -1)
+rushSpeedFactor = 2
+horizontalMovement = true
+lowSide = false
+directionDash = Vector2(0, -1)
+directionRegular = Vector2(-1, 0)
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="BlueLight" parent="Lights" instance=ExtResource("19_xcg8m")]
+position = Vector2(97.7059, -1.0033)
+color = Color(0.596986, 0.561741, 0.986516, 1)
+energy = 0.2
+texture_scale = 4.24
+
+[node name="RedLight2" parent="Lights" instance=ExtResource("19_xcg8m")]
+position = Vector2(103.688, 102.337)
+color = Color(1, 0, 0, 1)
+energy = 1.85
+texture_scale = 4.24
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lights"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_b0vsa")
+}
+autoplay = "lightMovement"
+
+[node name="MainBackground" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(62.8109, 58.7536)
+scale = Vector2(0.176496, 0.176496)
+texture = ExtResource("20_4njcg")
+
+[node name="WinningTimer" type="Timer" parent="."]
+
+[node name="DialogueBox" parent="." instance=ExtResource("20_dvu2r")]
+offset_left = -27.916
+offset_top = 132.436
+offset_right = 128.084
+offset_bottom = 172.436
+
+[connection signal="timeout" from="Camera2D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Camera2D/ComboPanel/ComboTimer" to="Bullies/BullyLeft" method="_on_combo_timer_timeout"]
+[connection signal="iGotHit" from="allMinis/minis" to="allMinis" method="_on_minis_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis11" to="allMinis" method="_on_minis_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis3" to="allMinis" method="_on_minis_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis5" to="allMinis" method="_on_minis_i_got_hit"]
+[connection signal="iGotHit" from="allMinis/minis7" to="allMinis" method="_on_minis_i_got_hit"]
+[connection signal="timeout" from="WinningTimer" to="allMinis" method="_on_winning_timer_timeout"]

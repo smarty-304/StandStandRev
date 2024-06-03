@@ -1,7 +1,24 @@
-[gd_scene load_steps=16 format=3 uid="uid://b8wllvaj5c2ap"]
+[gd_scene load_steps=21 format=3 uid="uid://b8wllvaj5c2ap"]
 
+[ext_resource type="Texture2D" uid="uid://45o5888u2ekg" path="res://Sprites/dancer_emo_sheet.png" id="1_41loy"]
 [ext_resource type="Texture2D" uid="uid://e654lntgo70c" path="res://Sprites/dancer_dad_sheet.png" id="1_nrb4o"]
 [ext_resource type="Texture2D" uid="uid://gmqhciex7rvf" path="res://Sprites/dancer_lady_sheet.png" id="2_pbr70"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sub0i"]
+atlas = ExtResource("1_41loy")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8iyi"]
+atlas = ExtResource("1_41loy")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psmta"]
+atlas = ExtResource("1_41loy")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mf3b"]
+atlas = ExtResource("1_41loy")
+region = Rect2(512, 512, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k83pi"]
 atlas = ExtResource("1_nrb4o")
@@ -53,6 +70,29 @@ region = Rect2(512, 512, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rj3v3"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sub0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8iyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psmta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mf3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psmta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8iyi")
+}],
+"loop": true,
+"name": &"emo",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k83pi")
@@ -127,6 +167,7 @@ animations = [{
 [node name="MiniAnim" type="AnimatedSprite2D"]
 scale = Vector2(0.035, 0.035)
 sprite_frames = SubResource("SpriteFrames_rj3v3")
-animation = &"guy"
+animation = &"emo"
 autoplay = "lady"
+frame_progress = 0.0745617
 speed_scale = 2.5

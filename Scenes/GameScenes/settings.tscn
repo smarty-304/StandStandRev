@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/settings.gd" id="1_a0j00"]
 [ext_resource type="PackedScene" uid="uid://cmcq3xy2bsiu8" path="res://Scripts/volume_slider.tscn" id="2_7knak"]
-[ext_resource type="Texture2D" uid="uid://chwvicwgpqow6" path="res://Sprites/bouncer_sketch.png" id="2_p1d6y"]
+[ext_resource type="Texture2D" uid="uid://d07dhjwbxg6g0" path="res://Sprites/single_bouncer.png" id="2_vrujj"]
 [ext_resource type="Texture2D" uid="uid://50ajppmivtak" path="res://Sprites/main_background.png" id="4_exfah"]
 
 [node name="Menu" type="Control"]
@@ -33,7 +33,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_p1d6y")
+texture = ExtResource("2_vrujj")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

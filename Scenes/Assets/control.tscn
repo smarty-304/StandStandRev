@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://pstwx1t2ykwa"]
 
-[ext_resource type="Texture2D" uid="uid://dha1ylj1o3f0s" path="res://Sprites/pirouette_sketch.png" id="1_pkwht"]
+[ext_resource type="Texture2D" uid="uid://dha1ylj1o3f0s" path="res://Sprites/pirouette_sketch.png" id="1_o6knn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce4a1"]
 bg_color = Color(0.0891245, 0.000116513, 0.237705, 0.568627)
@@ -57,5 +57,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_pkwht")
+texture = ExtResource("1_o6knn")
 expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialogue"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = -86.0
+offset_right = -18.0
+offset_bottom = 97.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Hey you! Bouncer guys! Listen up!
+My name is Pirouette and my dad owns this club!
+
+It's my birthday and I want drink. Rush over to the Bar by pressing \"D\" and get me a MaiTai!!"

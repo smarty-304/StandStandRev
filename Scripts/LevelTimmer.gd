@@ -8,7 +8,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	var timerTimeLeftMin = str(int(timer.time_left)/60)
 	var timerTimeLeftSec = int(int(timer.time_left)%60)
 	var timerTimeLeftSecStr: String
